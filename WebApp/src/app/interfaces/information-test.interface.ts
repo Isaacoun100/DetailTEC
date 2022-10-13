@@ -1,3 +1,4 @@
 export interface InformationTestI{
-    Nombre:string
+    username:string
+    password:number
 }

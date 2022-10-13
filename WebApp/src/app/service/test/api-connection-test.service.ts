@@ -8,12 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class ApiConnectionTestService {
 
-  url = 'http://localhost:7038/api/'
-
+  url = 'http://localhost:7274/api/'
   constructor(private http:HttpClient) { }
 
   getInformationTest():Observable<InformationTestI[]>{
-    let direccion = this.url + "test-information";
+    let direccion = this.url + "UserControllerTest";
     return this.http.get<InformationTestI[]>(direccion);
   }
 }
