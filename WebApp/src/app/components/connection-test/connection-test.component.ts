@@ -19,5 +19,4 @@ export class ConnectionTestComponent implements OnInit {
       this.information = data;
     })
   }
-
 }
