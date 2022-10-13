@@ -1,5 +1,5 @@
-{
-  "users":[{
+
+[{
     "username": "usuario1@mail.com",
     "password": 123456
   },
@@ -15,4 +15,3 @@
     "username": "usuario4@mail.com",
     "password": 131199
   }]
-}
