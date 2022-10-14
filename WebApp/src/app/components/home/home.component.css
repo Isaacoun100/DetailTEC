@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #c97b4e, #d66320 , #b92d2d);
+  background-image: url("src\assets\images\home.jpg");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size:cover;
+  z-index: -10;
+
+}
+
+
+.btnformat {
+  width: 20%;
+  height: 60%;
+  margin-right: 20%; 
+  border-radius: 25px;
+  background-color: #837b77;
+  color: white;
+  margin-top: 10%;
+  font-size: 30px;
+}
+
+.user{
+  width: 150px;
+  height: 150px;
+  background-image: url("src\assets\images\clientIcon.png");
+  background-size: cover;
+  background-color: #F7F7A3;
+  border: solid;
+  margin-left: 15%;
+  margin-top: 2%;
+
+}
+
+.employee{
+  width: 150px;
+  height: 150px;
+  background-image: url("src\assets\images\adminIcon.png");
+  background-size: cover;
+  background-color: #F7F7A3;
+  border: solid;
+  margin-left: 21%;
+}
+
+.btnformat2 {
+  width: 20%;
+  height: 60%;
+  margin-right: 20%; 
+  border-radius: 25px;
+  background-color: #837b77;
+  color: white;
+  margin-top: 10%;
+  font-size: 30px;
+}
+
+.btns{
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 12%;
+  background-color: #424241;
+}
+
+.title1{
+  color: #E2DB00;
+  margin-left: 21%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.title2{
+  color: #E2DB00;
+  margin-left: 28%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+.social
+{
+  position: absolute;
+  z-index: 10;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social li
+{
+  list-style: none;
+}
+.social li a
+{
+  display: inline-block;
+  margin-right: 20px;
+  filter: invert(1);
+  transform: scale(0.5);
+  transition: 0.5s;
+}
+.social li a:hover
+{
+  transform: scale(0.5) translateY(-15px);
+}
+
+@media(max-width: 459px){
+  .container .content{
+    flex-direction: column;
+  }
+
+  header video {
+    display: none;
+  }
+}
