@@ -8,11 +8,11 @@ import {ResponseI} from '../../models/response.interface'
 import { computeMsgId } from '@angular/compiler';
 
 @Component({
-  selector: 'app-login-admin',
-  templateUrl: './login-admin.component.html',
-  styleUrls: ['./login-admin.component.css']
+  selector: 'app-login-client',
+  templateUrl: './login-client.component.html',
+  styleUrls: ['./login-client.component.css']
 })
-export class LoginAdminComponent implements OnInit {
+export class LoginClientComponent implements OnInit {
 
   loginForm = new FormGroup({
     correo: new FormControl('', Validators.required),
@@ -32,11 +32,12 @@ export class LoginAdminComponent implements OnInit {
       let dataResponse: ResponseI = data;
       if(dataResponse.status == "ok"){
         localStorage.setItem("token", data.result.cedula);
-        this.router.navigate(['dashboard']);//redireccionara al home del admin
+        this.router.navigate(['dashboard']);//redireccionara al home del cliente
       }else{
         this.errorStatus= true;
         this.errorMsj = "Credenciales invalidas";
       }
     })
   }
+
 }

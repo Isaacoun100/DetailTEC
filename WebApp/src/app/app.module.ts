@@ -8,13 +8,15 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
+import { LoginClientComponent } from './components/login-client/login-client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     HomeComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    LoginClientComponent
   ],
   imports: [
     BrowserModule,
