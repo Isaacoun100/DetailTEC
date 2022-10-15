@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MecaTEC_App.Views.Appointment_Page"
+             BackgroundColor="#FFFFFF">
+    <ContentPage.Content>
+        <!-- This Layout contains a document to register in CookTime App-->
+
+        <!-- In this page the user can fill a document to create a new profile in CookTime application -->
+
+        <!--#region MainLayout-->
+        <StackLayout>
+            <!--#region Data of new user-->
+            <Grid VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <Label x:Name="text1" Text="To make an appointment, please fill with your info:" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+                <Entry x:Name="clientEntry" Keyboard="Default" Grid.Row="1" Placeholder="Username" />
+                <Entry x:Name="licenseEntry" Keyboard ="Numeric"   Grid.Row="2" Placeholder="License plate number"/>
+                <Label Text="Please select a branch:" Grid.Row="3"></Label>
+                <Picker x:Name="pickersucursal" SelectedIndexChanged="PickerSucursal_SelectedIndexChanged" Grid.Row="4"></Picker>
+                <BoxView x:Name="selectedbranch" VerticalOptions="CenterAndExpand" Grid.Row="5"></BoxView>
+                <Label Text="Please select a branch:" Grid.Row="6"></Label>
+                <Picker x:Name="pickerservice" SelectedIndexChanged="PickerService_SelectedIndexChanged" Grid.Row="7"></Picker>
+                <BoxView x:Name="selectedservice" VerticalOptions="CenterAndExpand" Grid.Row="8"></BoxView>
+
+
+                <Button Text="Make appointment!" Grid.Row="9" Clicked="Make_Appointment"/>
+
+            </Grid>
+            <!--#endregion -->
+        </StackLayout>
+        <!--#endregion -->
+    </ContentPage.Content>
+</ContentPage>

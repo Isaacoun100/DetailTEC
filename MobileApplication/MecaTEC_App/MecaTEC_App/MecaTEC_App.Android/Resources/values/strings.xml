@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<string-array name="sucursales">
+		<item>Cartago Centro</item>
+		<item>Oreamuno de Cartago</item>
+		<item>Pinares Curridabat</item>
+		<item>Rio Oro Santa Ana</item>
+		<item>Ciudad de Panama</item>
+	</string-array>
+	
+</resources>
