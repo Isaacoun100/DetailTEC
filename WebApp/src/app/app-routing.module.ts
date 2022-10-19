@@ -4,11 +4,13 @@ import {ConnectionTestComponent} from './components/connection-test/connection-t
 import {HomeComponent} from './components/home/home.component'
 import {LoginAdminComponent} from './components/login-admin/login-admin.component'
 import {LoginClientComponent} from './components/login-client/login-client.component'
+import {HomeAdminComponent} from './components/home-admin/home-admin.component'
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'loginAdmin',component:LoginAdminComponent},
   {path:'loginClient',component:LoginClientComponent},
+  {path:'homeAdmin',component:HomeAdminComponent},
   {path: 'test-info', component:ConnectionTestComponent},
 ];
 
@@ -17,4 +19,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [ConnectionTestComponent,HomeComponent,LoginAdminComponent,LoginClientComponent]
+export const routingComponents = [ConnectionTestComponent,HomeComponent,LoginAdminComponent,LoginClientComponent,
+  HomeAdminComponent]
