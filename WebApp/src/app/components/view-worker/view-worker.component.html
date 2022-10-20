@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Nombre</label>
+      <label for="exampleFormControlInput1">{{ workerInfo.nombre }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Apellidos</label>
+      <label for="exampleFormControlInput1">{{ workerInfo.apellidos }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Cedula</label>
+      <label for="exampleFormControlInput1">{{ workerInfo.cedula }}</label>
+    </div>
+  </div>
+  <br /><br />
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Fecha Ingreso</label>
+      <label for="exampleFormControlInput1">{{
+        workerInfo.fechaIngreso
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Fecha Nacimiento</label>
+      <label for="exampleFormControlInput1">{{
+        workerInfo.fechaNacimiento
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Edad</label>
+      <label for="exampleFormControlInput1">{{ workerInfo.edad }}</label>
+    </div>
+  </div>
+  <br /><br />
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Contraseña</label>
+      <label for="exampleFormControlInput1">{{ workerInfo.password }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Rol</label>
+      <label for="exampleFormControlInput1">{{ workerInfo.rol }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Tipo de Pago</label>
+      <label for="exampleFormControlInput1">{{ workerInfo.tipoPago }}</label>
+    </div>
+  </div>
+  <br />
+  <button type="button" class="btn btn-secondary" (click)="edit()">
+    Editar
+  </button>
+  <button type="button" class="btn btn-danger" (click)="delete()">
+    Eliminar
+  </button>
+  <button type="submit" class="btn btn-dark" (click)="exit()">Salir</button>
+</div>

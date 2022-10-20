@@ -4,6 +4,7 @@ import {Observable} from 'rxjs'
 
 import {LoginI} from '../../models/login/login.interface'
 import {ResponseI} from '../../models/response.interface'
+import * as myGlobals from '../../../../src/globals'
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import {ResponseI} from '../../models/response.interface'
 })
 export class LoginService {
 
-  url = 'http://localhost:7038/api/'
+  url = myGlobals.URL
   constructor(private http:HttpClient) { }
 
   loginByEmail(form:LoginI): Observable<ResponseI>{

@@ -8,11 +8,12 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './templates/header/header.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    routingComponents
+    routingComponents,
   ],
   imports: [
     BrowserModule,
