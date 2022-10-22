@@ -40,3 +40,5 @@ API/API/obj/project.packagespec.json
 API/API/obj/rider.project.restore.info
 
 API/API/obj/staticwebassets.pack.sentinel
+
+API/API/obj/API.csproj.nuget.g.props
