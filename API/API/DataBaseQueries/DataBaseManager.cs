@@ -16,12 +16,14 @@ public class DataBaseManager {
             SqlCommand command = new SqlCommand( queryString, connection);
 
             try { connection.Open(); }
-            catch (Exception e) { Console.WriteLine("Could'nt connect to the Database with error" + "\n" + e); }
+            catch (Exception e) { Console.WriteLine("Couldn't connect to the Database with error" + "\n" + e); }
 
             try{reader = command.ExecuteReader();}
             catch(Exception e){ Console.WriteLine("Couldn't fulfill the request");}
-            
-            connection.Close();
+
+            while (reader.Read()) {
+                Console.WriteLine(String.Format("{0},{1},{2}", reader[0],reader[1],reader[2]));
+            }
 
             return reader;
         }
