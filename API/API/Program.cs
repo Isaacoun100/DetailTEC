@@ -1,3 +1,10 @@
+using API.Models;
+using API.RequestFromDatabase;
+
+ManageClients clientManager = new ManageClients();
+
+List<Client> client = clientManager.getClient("10");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
