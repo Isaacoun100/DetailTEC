@@ -6,7 +6,7 @@ public class DataBaseManager {
     
     public List<List<String>> ReadOrderData(string queryString) {
         
-        string connectionString = @"Server=DESKTOP-E6SO50B\SQL_DETAILTEC;
+        string connectionString = @"Server=LAPTOP\SQL_DETAILTEC;
                                     Database=DetailTEC_DB;
                                     Integrated Security=True;
                                     TrustServerCertificate=True";
