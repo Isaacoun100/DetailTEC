@@ -29,10 +29,12 @@ public class ClientController: ControllerBase
         var client = clients.Find(h => h.cedula == clientToGet.cedula);
         if (client == null)
         {
-            return BadRequest("Client not found");
+            var badResult = new StatusJSON("Error", null);
+            return BadRequest(badResult);
         }
 
-        return Ok(client);
+        var validResult = new StatusJSON("Ok", client);
+        return Ok(validResult);
     }
 
     [HttpDelete("deleteClient")]
