@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DetailTEC.Views.Info_Page">
+    <ContentPage.Content>
+        <!--This layout contains info of the developers-->
+        <!--#region Info Layout-->
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="INSTITUTO TECNOLÓGICO DE COSTA RICA"/>
+            <Label Text="Base de Datos"/>
+            <Label Text="Profesor: Luis Diego Noguera Mena"/>
+            <Label Text="Proyecto 1: DetailTEC"/>
+            <Label Text="Autores:"/>
+            <Label Text="* Valverde Navarro Michael"/>
+            <Label Text="* Espinzoza Chaves José Antonio"/>
+            <Label Text="* Herrera Monge Isaac Mauricio"/>
+            <Label Text="* Juan Daniel Rodriguez Montero"/>
+            <Label Text="II Semestre 2022"/>
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>
