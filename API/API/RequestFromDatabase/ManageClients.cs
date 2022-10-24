@@ -7,7 +7,7 @@ using API.Models;
 
 public class ManageClients {
     
-    private DataBaseManager dataBaseManager = new DataBaseManager();
+    private DataBaseManager dataBaseManager= new DataBaseManager();
     
     public Client getClient(string cedula) {
         
@@ -67,34 +67,42 @@ public class ManageClients {
 
     }
     
-    public bool addClient() {
-        
-        List<List<String>> data =  dataBaseManager.ReadOrderData("SELECT * " +
-                                                                 "FROM Cliente");
+    public bool addClient(Client newClient) {
 
-        List<Client> clientList = new List<Client>();
-        Client client = new Client();
+        if (getClient(newClient.cedula.ToString()).cedula!=0) {
 
-        for (int i = 0; i < data.Count; i++) {
-            if (data[i][0].Contains("")) {
-                client.cedula = Convert.ToInt32(data[i][0]);
-                client.nombreCompleto  = data[i][1];
+            string queryString = string.Format(
+                "INSERT INTO Cliente (cedula, nombreCompleto, puntos, contrasena, correo, usuario, direccion)" +
+                " VALUES ({0},'{1}',{2},'{3}','{4}','{5}','{6}')",
+                newClient.cedula, newClient.nombreCompleto, newClient.puntos.ToString(), newClient.contrasena,
+                newClient.correo, newClient.usuario, newClient.direccion);
+            
+            Console.WriteLine(queryString);
 
-                try { client.puntos = Convert.ToInt32(data[i][2]); }
-                catch (Exception e) { client.puntos = 0; }
-    
-                client.contrasena = data[i][3];
-                client.correo = data[i][4];
-                client.usuario = data[i][5];
-                client.direccion = data[i][6];
+            try {
+                dataBaseManager.ExecuteQuery(queryString);
+                return true;
             }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return false;
+            }
+            
+        }
+        
+        return false;
+    }
+    
+    public bool deleteClient(string cedula) {
 
-            clientList.Add(client);
-            client = new Client();
+        if (getClient(cedula).cedula!=0) {
 
+            dataBaseManager.ExecuteQuery(String.Format( "DELETE FROM Cliente" +
+                                         " WHERE cedula = {0};",cedula));
+            return true;
         }
 
-        return clientList;
+        return false;
 
     }
 

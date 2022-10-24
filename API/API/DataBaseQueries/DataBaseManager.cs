@@ -43,19 +43,18 @@ public class DataBaseManager {
                                     Database=DetailTEC_DB;
                                     Integrated Security=True;
                                     TrustServerCertificate=True";
-        SqlDataReader reader = null;
 
-        using (SqlConnection connection = new SqlConnection(connectionString)) {
-
-            try {
-                SqlCommand command = new SqlCommand( queryString, connection);
-                return true;
-            }
-            catch (Exception e) {
-                Console.WriteLine(e);
-                return false;
-            }
+        try {
+            using var sc = new SqlConnection(connectionString);
+            using var cmd = sc.CreateCommand();
+            sc.Open();
+            cmd.CommandText = queryString;
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e) {
+            Console.WriteLine(e);
+            return false;
         }
     }
-    
 }
