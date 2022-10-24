@@ -37,15 +37,10 @@ public class LoginController : ControllerBase
 
 
         string validCredentials = "{cedula:1122334455}";
-        var stat = new StatusJSON()
-        {
-            status = "OK",
-            result = validCredentials
-
-        };
         
-       Console.WriteLine(stat.ToString());
-        return Ok(stat);
+        
+       Console.WriteLine(validCredentials);
+        return Ok(validCredentials);
     }
 
 
