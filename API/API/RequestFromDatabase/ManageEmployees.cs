@@ -8,7 +8,7 @@ public class ManageEmployees {
     
     private DataBaseManager dataBaseManager = new DataBaseManager();
     
-    public Employee getEmployee(string cedula) {
+    /*public Employee getEmployee(string cedula) {
 
         SqlDataReader data = null;
         data = dataBaseManager.ReadOrderData("SELECT * " +
@@ -38,5 +38,5 @@ public class ManageEmployees {
 
         return employee;
 
-    }
+    }*/
 }
