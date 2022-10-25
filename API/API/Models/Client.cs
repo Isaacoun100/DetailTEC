@@ -3,7 +3,7 @@ namespace API.Models;
 public class Client
 {
     public string nombreCompleto { get; set; } = string.Empty;
-    public List<int> telefonos { get; set; }
+    //public List<int> telefonos { get; set; }
     public int cedula { get; set; }
     public string correo { get; set; }
     public string direccion { get; set; }

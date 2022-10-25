@@ -1,4 +1,10 @@
+
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+
 namespace API.Models;
+
+
 
 public class StatusJSON
 {
@@ -9,16 +15,7 @@ public class StatusJSON
     public StatusJSON(string status, Object result)
     {
         this.status = status;
-        if (result == null)
-        {
-            this.result = "{}";
-        }
-        else
-        {
-            this.result = result;
-        }
-
-        
+        this.result = result;
     }
     
 }
