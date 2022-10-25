@@ -69,7 +69,7 @@ public class ManageClients {
     
     public bool addClient(Client newClient) {
 
-        if (getClient(newClient.cedula.ToString()).cedula!=0) {
+        if (!getClient(newClient.cedula.ToString()).cedula.Equals('0')) {
 
             string queryString = string.Format(
                 "INSERT INTO Cliente (cedula, nombreCompleto, puntos, contrasena, correo, usuario, direccion)" +
@@ -90,7 +90,6 @@ public class ManageClients {
             
         }
         
-        Console.WriteLine("This route");
         return false;
     }
     
@@ -107,4 +106,49 @@ public class ManageClients {
 
     }
 
+    public bool updateClient(Client newClient) {
+
+        Client updatedClient = getClient(newClient.cedula.ToString());
+
+        if (updatedClient.cedula==0)
+            return false;
+
+        if (!newClient.nombreCompleto.Equals(""))
+                dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
+                                                        "SET nombreCompleto = '{0}' " +
+                                                        "WHERE cedula = {1};", 
+                                                        newClient.nombreCompleto, newClient.cedula));
+        if (newClient.puntos!=0)
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
+                                                       "SET puntos = {0} " +
+                                                       "WHERE cedula = {1};", 
+                                                        newClient.puntos, newClient.cedula));
+        
+        if (!newClient.contrasena.Equals(""))
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
+                                                       "SET contrasena = '{0}' " +
+                                                       "WHERE cedula = {1};", 
+                                                        newClient.contrasena, newClient.cedula));
+        
+        if (!newClient.correo.Equals(null))
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
+                                                       "SET correo = '{0}' " +
+                                                       "WHERE cedula = {1};", 
+                                                        newClient.correo, newClient.cedula));
+        
+        if (!newClient.usuario.Equals(""))
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
+                                                       "SET usuario = '{0}' " +
+                                                       "WHERE cedula = {1};", 
+                                                        newClient.usuario, newClient.cedula));
+        if (!newClient.direccion.Equals(null))
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
+                                                       "SET direccion = '{0}' " +
+                                                       "WHERE cedula = {1};", 
+                                                        newClient.correo, newClient.cedula));
+
+        return true;
+
+    }
+    
 }
