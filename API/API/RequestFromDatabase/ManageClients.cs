@@ -104,10 +104,10 @@ public class ManageClients {
 
         if (getClient(cedula).cedula!=0) {
 
-            dataBaseManager.ExecuteQuery(String.Format( "DELETE FROM Cliente" +
-                                         " WHERE cedula = {0} " +
-                                         "DELETE FROM Telefonos_por_Cliente " +
-                                         "WHERE cliente= {0} ",cedula));
+            dataBaseManager.ExecuteQuery(String.Format("DELETE FROM Telefonos_por_Cliente " +
+                                                       "WHERE cliente= {0} " +
+                                                       "DELETE FROM Cliente " + 
+                                                       "WHERE cedula = {0} ",cedula));
             return true;
         }
 
@@ -159,5 +159,34 @@ public class ManageClients {
         return true;
 
     }
-    
+
+    public Client loginClient(string correo, string contrasena) {
+
+        List<List<String>> data = dataBaseManager.ReadOrderData(String.Format(
+            "SELECT * FROM Cliente " +
+            "WHERE correo='{0}' AND contrasena='{1}';", correo, contrasena));
+
+        Client client = new Client();
+
+        if (data.Count != 0) {
+            if (data[0][0].Contains("")) {
+                client.cedula = Convert.ToInt32(data[0][0]);
+                client.nombreCompleto = data[0][1];
+
+                try {
+                    client.puntos = Convert.ToInt32(data[0][2]);
+                }
+                catch (Exception e) {
+                    client.puntos = 0;
+                }
+
+                client.contrasena = data[0][3];
+                client.correo = data[0][4];
+                client.usuario = data[0][5];
+                client.direccion = data[0][6];
+            }
+        }
+
+        return client;
+    }
 }
