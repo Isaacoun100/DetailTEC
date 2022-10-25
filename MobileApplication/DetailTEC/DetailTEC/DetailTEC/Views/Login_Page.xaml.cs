@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,41 +54,25 @@ namespace DetailTEC.Views
             var userValidate = userEntry.Text;
             if (!string.IsNullOrEmpty(userValidate))
             {
-                System.Console.WriteLine("Hola");
+
                 string email = userEntry.Text;
-                string password = "_" + CreateMD5(pasEntry.Text);
-
-                //HttpClient cliente = new HttpClient();
-                //string url = "http://" + "localhost" + ":7274/api/UserControllerTest";
-                //Uri uri = new Uri("http://localhost:7274/api/UserControllerTest");
-                var request = new HttpRequestMessage();
-                request.RequestUri = new Uri("http://localhost:7274/api/UserControllerTest");
-                request.Method = HttpMethod.Get;
-                request.Headers.Add("Accept", "application/json");
-                var client = new HttpClient();
-                HttpResponseMessage response = await client.SendAsync(request);
-
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                string password = CreateMD5(pasEntry.Text);
+                HttpClient cliente = new HttpClient();
+                string url = "http://" + ip + ":7038/api/auth";
+                var result = await cliente.GetAsync(url);
+                var json = result.Content.ReadAsStringAsync().Result;
+                DetailTEC.REST_API_UserModel.User InputUser = new REST_API_UserModel.User();
+                InputUser = DetailTEC.REST_API_UserModel.User.FromJson(json);
+                if (InputUser.Name == null)
                 {
-                    string content = await response.Content.ReadAsStringAsync();
-                    System.Console.WriteLine(content);
-                }
-
-                //var result = await cliente.GetAsync(url);
-                //var json = result.Content.ReadAsStringAsync().Result;
-                /*
-                MecaTEC_App.REST_API_UserModel.User InputUser = new REST_API_UserModel.User();
-                InputUser = MecaTEC_App.REST_API_UserModel.User.FromJson();
-                if (InputUser.Email == null)
-                {
-                    await DisplayAlert("MecaTEC", "The data you filled with does not match with any CookTime user. Please verify your info and try again!", "OK");
+                    await DisplayAlert("DetailTEC", "The data you filled with does not match with any DetailTEC user. Please verify your info and try again!", "OK");
                 }
                 else
                 {
-                    CURRENTUSER = MecaTEC_App.REST_API_UserModel.User.FromJson(json);
+                    CURRENTUSER = DetailTEC.REST_API_UserModel.User.FromJson(json);
                     await DisplayAlert("DetailTEC", "Welcome back " + CURRENTUSER.Name, "OK");
                     await Navigation.PushAsync(new Home_Page());
-                }*/
+                }
             }
 
         }
