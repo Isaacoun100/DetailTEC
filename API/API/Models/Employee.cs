@@ -11,6 +11,7 @@ public class Employee
     public string contrasena { get; set; } = string.Empty;
     public string rol { get; set; } = string.Empty;
     public string tipoPago { get; set; } = string.Empty;
+    public bool isGerente { get; set; } = false;
 
 
 }

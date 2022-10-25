@@ -1,6 +1,5 @@
 namespace API.RequestFromDatabase;
 
-using Microsoft.Data.SqlClient;
 using API.DataBaseQueries;
 using API.Models;
 
@@ -39,7 +38,7 @@ public class ManageClients {
     public List<Client> getAllClients() {
         
         List<List<String>> data =  dataBaseManager.ReadOrderData("SELECT * " +
-                                                                 "FROM Cliente");
+                                                                 "FROM Cliente;");
 
         List<Client> clientList = new List<Client>();
         Client client = new Client();
@@ -106,7 +105,9 @@ public class ManageClients {
         if (getClient(cedula).cedula!=0) {
 
             dataBaseManager.ExecuteQuery(String.Format( "DELETE FROM Cliente" +
-                                         " WHERE cedula = {0};",cedula));
+                                         " WHERE cedula = {0} " +
+                                         "DELETE FROM Telefonos_por_Cliente " +
+                                         "WHERE cliente= {0} ",cedula));
             return true;
         }
 
