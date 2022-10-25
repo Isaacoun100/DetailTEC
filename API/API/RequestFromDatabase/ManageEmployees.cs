@@ -173,4 +173,36 @@ public class ManageEmployees {
 
     }
     
+    public Employee loginEmployee(string cedula, string contrasena) {
+
+        List<List<String>> data = dataBaseManager.ReadOrderData(String.Format(
+            "SELECT * FROM Trabajador " +
+            "WHERE cedula={0} AND contrasena='{1}';", cedula, contrasena));
+
+        Employee employee = new Employee();
+
+        if (data.Count!=0) {
+            if (data[0][0].Contains("")) {
+                
+                employee.cedula = Convert.ToInt32(data[0][0]);
+                employee.nombre  = data[0][1];
+                employee.apellidos  = data[0][2];
+                employee.contrasena  = data[0][3];
+                employee.edad = Convert.ToInt32(data[0][4]);
+                employee.fechaNacimiento = DateTime.Parse(data[0][5]).ToShortDateString();
+                employee.fechaIngreso = DateTime.Parse(data[0][6]).ToShortDateString();
+                employee.tipoPago = data[0][7];
+                employee.rol = data[0][8];
+
+                if (data[0][9].Equals("true"))
+                    employee.isGerente = true;
+                else
+                    employee.isGerente = false;
+
+            }
+        }
+
+        return employee;
+    }
+    
 }
