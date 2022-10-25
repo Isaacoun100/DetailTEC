@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DetailTEC.Views.Points_Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Your Points:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="1"/>
+            <Label
+                x:Name="Points"
+                Text="0"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="2"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
