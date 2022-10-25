@@ -1,4 +1,5 @@
 using API.Models;
+using API.RequestFromDatabase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -8,70 +9,92 @@ namespace API.Controllers;
 public class EmployeeController: ControllerBase
 {
     
-    private static List<Employee> employees = new List<Employee>();
+   
     
     [HttpPost("getEmployee")]
-    public async Task<ActionResult<Employee>> GetEmployee(ID cedula)
+    public async Task<ActionResult<StatusJSON>> GetEmployee(ID cedula)
     {
-        //se busca el employee con el parametro cedula, si existe se devuelve la información de este 
-        //usando el modelo de employee 
-        Console.WriteLine(cedula.cedula);
-
-        var employee = employees.Find(h => h.cedula == cedula.cedula);
-        if (employee == null)
+        ManageEmployees manageEmployees = new ManageEmployees();
+        Employee employee = manageEmployees.getEmployee(cedula.cedula.ToString());
+        StatusJSON json;
+        if (employee.cedula == 0)
         {
-            return BadRequest("Employee not found");
-            
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
 
-        return Ok(employee);
+        json = new StatusJSON("Ok", employee);
+        return Ok(json);
     }
 
-    [HttpPost("addEmployee")]
-    public async Task<ActionResult<List<Employee>>> addEmployee(Employee employee)
+    [HttpGet("getAllEmployees")]
+    public async Task<ActionResult<List<StatusJSON>>> getAllEmployees()
     {
-        //añadir a un employee nuevo a la base
-        employees.Add(employee);
-        return Ok(employees);
+        ManageEmployees manageEmployees = new ManageEmployees();
+        List <Employee>  allEmployees= manageEmployees.GetAllEmployees();
+        StatusJSON json;
+        if (allEmployees.Count == 0)
+        {
+            json = new StatusJSON("Error",null);
+            return BadRequest(json);
+
+        }
+
+        json = new StatusJSON("OK", allEmployees);
+        return Ok(json);
+
+    }
+    
+
+    [HttpPost("addEmployee")]
+    public async Task<ActionResult<List<StatusJSON>>> addEmployee(Employee employee)
+    {
+        ManageEmployees employees = new ManageEmployees();
+        var addedEmployee = employees.addEmployee(employee);
+        StatusJSON json;
+        if (!addedEmployee)
+        {
+            json = new StatusJSON("Error", "Employee not added");
+            return BadRequest(json);
+        }
+
+        json = new StatusJSON("Ok", employee);
+        return Ok(json);
     }
     
 
     [HttpPut("updateEmployee")]
-    public async Task<ActionResult<Employee>> updateEmployee(Employee request)
+    public async Task<ActionResult<StatusJSON>> updateEmployee(Employee request)
     {
-        //encontrar el empleado con la base y se reemplaza con el resto de atributos de employee
-        var employee = employees.Find(h => h.cedula == request.cedula);
-        if (employee == null)
+
+        ManageEmployees employees = new ManageEmployees();
+        var updatedEmployee = employees.updateEmployee(request);
+        StatusJSON json;
+        if (!updatedEmployee)
         {
-            return BadRequest("Employee not found");
+            json = new StatusJSON("Error",null);
+            return BadRequest(json);
         }
 
-        employee.nombre = request.nombre;
-        employee.apellidos = request.apellidos;
-        employee.fechaIngreso = request.fechaIngreso;
-        employee.fechaNacimiento = request.fechaNacimiento;
-        employee.edad = request.edad;
-        employee.contrasena = request.contrasena;
-        employee.rol = request.rol;
-        employee.tipoPago = request.tipoPago;
-
-        return Ok(employees);
-
+        json = new StatusJSON("Ok", request);
+        return Ok(json);
     }
 
     [HttpDelete("deleteEmployee")]
-    public async Task<ActionResult<Employee>> deleteEmployee(ID employeeToDelete)
+    public async Task<ActionResult<StatusJSON>> deleteEmployee(ID employeeToDelete)
     {
-        
-        //encontrar el empleado con la base y se reemplaza con el resto de atributos de employee
-        var deleteEmployee = employees.Find(h => h.cedula == employeeToDelete.cedula);
-        if (deleteEmployee == null)
+        ManageEmployees employees = new ManageEmployees();
+        var deletedEmployee = employees.deleteEmployee(employeeToDelete.cedula.ToString());
+        StatusJSON json;
+        if (!deletedEmployee)
         {
-            BadRequest("Employee not found");
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
 
-        employees.Remove(deleteEmployee);
-        return Ok(employees);
+        json = new StatusJSON("Ok", employeeToDelete);
+        return Ok(json);
+
     }
     
 
