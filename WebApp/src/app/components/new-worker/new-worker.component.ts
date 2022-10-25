@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
 import {SingleWorkerI} from '../../models/workers/singleWorker.interface'
-import {ResponseI} from '../../models/response.interface'
 import {WorkersService} from '../../service/workers/workers.service'
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -32,10 +31,10 @@ export class NewWorkerComponent implements OnInit {
 
   postForm(form:SingleWorkerI){
     this.api.postEmployee(form);
+    this.newForm.reset();
   }
 
   exit(){
     this.router.navigate(["workers"])
   }
-
 }

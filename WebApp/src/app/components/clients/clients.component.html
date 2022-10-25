@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<div class="container">
+  <h3>Lista de Clientes</h3>
+  <br />
+  <button type="button" class="btn btn-primary" (click)="newClient()">
+    Nuevo Cliente
+  </button>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Cedula</th>
+        <th scope="col">Nombre Completo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <p>{{ error_msg }}</p>
+      <tr *ngFor="let client of clients" (click)="viewClient(client.cedula)">
+        <th scope="row">{{ client.cedula }}</th>
+        <td>{{ client.nombreCompleto }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

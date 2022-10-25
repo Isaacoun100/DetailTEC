@@ -1,7 +1,7 @@
 export interface SingleWorkerI{
     nombre:string,
     apellidos:string,
-    cedula:number,
+    cedula:string,
     fechaIngreso:string,
     fechaNacimiento:string,
     edad:number,

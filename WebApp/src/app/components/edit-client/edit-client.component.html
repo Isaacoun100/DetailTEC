@@ -4,56 +4,65 @@
   <form [formGroup]="editForm" (ngSubmit)="putForm(editForm.value)">
     <div class="form-group row">
       <div class="col">
-        <label for="exampleFormControlInput1">Nombre</label>
+        <label for="exampleFormControlInput1">Nombre Completo</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Nombre"
-          formControlName="nombre"
+          placeholder="Nombre Completo"
+          formControlName="nombreCompleto"
         />
       </div>
       <div class="col">
-        <label for="exampleFormControlInput1">Apellidos</label>
+        <label for="exampleFormControlInput1">Telefono 1</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Apellidos"
-          formControlName="apellidos"
+          placeholder="Telefono 1"
+          formControlName="telefono1"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Telefono 2</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Telefono 2"
+          formControlName="telefono2"
         />
       </div>
     </div>
     <br /><br />
     <div class="form-group row">
       <div class="col">
-        <label for="exampleFormControlInput1">Fecha Ingreso</label>
+        <label for="exampleFormControlInput1">Correo</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Fecha Ingreso"
-          formControlName="fechaIngreso"
+          placeholder="Correo"
+          formControlName="correo"
         />
       </div>
       <div class="col">
-        <label for="exampleFormControlInput1">Fecha Nacimiento</label>
+        <label for="exampleFormControlInput1">Direccion</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Fecha Nacimiento"
-          formControlName="fechaNacimiento"
-        />
-      </div>
-      <div class="col">
-        <label for="exampleFormControlInput1">Edad</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Edad"
-          formControlName="edad"
+          placeholder="Direccion"
+          formControlName="direccion"
         />
       </div>
     </div>
     <br /><br />
     <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Usuario</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Usuario"
+          formControlName="usuario"
+        />
+      </div>
       <div class="col">
         <label for="exampleFormControlInput1">Contraseña</label>
         <input
@@ -64,27 +73,18 @@
         />
       </div>
       <div class="col">
-        <label for="exampleFormControlInput1">Rol</label>
+        <label for="exampleFormControlInput1">Puntos</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Rol"
-          formControlName="rol"
-        />
-      </div>
-      <div class="col">
-        <label for="exampleFormControlInput1">Tipo de Pago</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Tipo de pago"
-          formControlName="tipoPago"
+          placeholder="Puntos"
+          formControlName="puntos"
         />
       </div>
     </div>
 
     <br />
     <button type="submit" class="btn btn-primary">Actualizar</button>
-    <button type="submit" class="btn btn-dark" (click)="exit()">Salir</button>
+    <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
   </form>
 </div>

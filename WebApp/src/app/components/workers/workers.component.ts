@@ -30,7 +30,7 @@ export class WorkersComponent implements OnInit {
     
   }
 
-  viewWorker(id:number){
+  viewWorker(id:string){
     this.router.navigate(["viewWorker", id])
   }
 

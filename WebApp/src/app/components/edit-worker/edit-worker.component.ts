@@ -5,7 +5,6 @@ import {WorkerRequestI} from '../../models/workers/workerRequest.interface'
 import {ResponseI} from '../../models/response.interface'
 import {WorkersService} from '../../service/workers/workers.service'
 import {FormGroup, FormControl, Validators} from '@angular/forms'
-import { HttpXsrfTokenExtractor } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-worker',
@@ -18,8 +17,8 @@ export class EditWorkerComponent implements OnInit {
     private api:WorkersService) { }
 
   workerInfoResponse:ResponseI;
-  workerInfo:SingleWorkerI;
   workerRequest:WorkerRequestI;
+  workerInfo:SingleWorkerI;
   
   editForm = new FormGroup({
     nombre: new FormControl(''),
@@ -37,12 +36,12 @@ export class EditWorkerComponent implements OnInit {
   ngOnInit(): void {
 
     let workerId = this.activerouter.snapshot.paramMap.get('id');
-    this.workerRequest.cedula = workerId
+    this.workerRequest = {'cedula':workerId}
 
     this.api.getSingleWorker(this.workerRequest).subscribe(data =>{
       this.workerInfoResponse = data;
       if(this.workerInfoResponse.status == "ok"){
-        this.workerInfo = this.workerInfoResponse.result;
+        this.workerInfo = data.result;
         this.editForm.setValue({
           'nombre' : this.workerInfo.nombre,
           'apellidos': this.workerInfo.apellidos,
@@ -58,16 +57,15 @@ export class EditWorkerComponent implements OnInit {
         alert("No se pudo cargar el trabajador")
       }})
       
+      
   }
 
   putForm(form:SingleWorkerI){
     this.api.putEmployee(form);
-
+    this.exit();
   }
 
   exit(){
     this.router.navigate(["viewWorker", this.activerouter.snapshot.paramMap.get('id')])
   }
-
-
 }

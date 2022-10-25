@@ -17,14 +17,24 @@ export class ViewWorkerComponent implements OnInit {
     private api:WorkersService) { }
 
   workerInfoResponse:ResponseI;
-  workerInfo:SingleWorkerI;
+  workerInfo:SingleWorkerI = {
+    "nombre":"",
+    "apellidos":"",
+    "cedula":"",
+    "fechaIngreso":"",
+    "fechaNacimiento":"",
+    "edad":0,
+    "password":"",
+    "rol":"",
+    "tipoPago":""
+  }
   workerRequest:WorkerRequestI;
 
   ngOnInit(): void {
 
     let workerId = this.activerouter.snapshot.paramMap.get('id');
-    this.workerRequest.cedula = workerId
-
+    this.workerRequest = {"cedula":workerId}
+    
     this.api.getSingleWorker(this.workerRequest).subscribe(data =>{
       this.workerInfoResponse = data;
       if(this.workerInfoResponse.status == "ok"){
@@ -33,15 +43,16 @@ export class ViewWorkerComponent implements OnInit {
         alert("No se pudo cargar el trabajador")
       }
     })
+    
   }
-
-
+  
   edit(){
     this.router.navigate(["editWorker", this.activerouter.snapshot.paramMap.get('id')])
   }
 
   delete(){
     this.api.deleteEmployee(this.workerRequest)
+    this.router.navigate(["workers"])
   }
 
   exit(){
