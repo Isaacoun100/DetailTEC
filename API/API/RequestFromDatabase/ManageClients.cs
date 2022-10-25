@@ -154,7 +154,7 @@ public class ManageClients {
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET direccion = '{0}' " +
                                                        "WHERE cedula = {1};", 
-                                                        newClient.correo, newClient.cedula));
+                                                        newClient.direccion, newClient.cedula));
 
         return true;
 
