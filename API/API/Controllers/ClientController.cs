@@ -1,4 +1,5 @@
 using API.Models;
+using API.RequestFromDatabase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -11,45 +12,78 @@ public class ClientController: ControllerBase
 
 
     [HttpPost("addClient")]
-    public async Task<ActionResult<Client>> addClient(Client newClient)
+    public async Task<ActionResult<StatusJSON>> addClient(Client newClient)
     {
-        clients.Add(newClient);
-        return Ok(clients);
+        string name = newClient.nombreCompleto;
+        Console.WriteLine(newClient.cedula);
+        Console.WriteLine(newClient.nombreCompleto);
+        Console.WriteLine(newClient.correo);
+        ManageClients manageClients = new ManageClients();
+        var savedClient = manageClients.addClient(newClient);
+        Console.WriteLine("Add client: " + savedClient);
+        StatusJSON json;
+        if (!savedClient)
+        {
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
+        }
+
+        json = new StatusJSON("Ok", newClient);
+        return Ok(json);
+
     }
     
     [HttpGet("getAllClients")]
     public async Task<ActionResult<Client>> getAllClients()
     {
-        return Ok(clients);
+        List<Client> allClientsDB = new List<Client>();
+        ManageClients manageClients = new ManageClients();
+        allClientsDB = manageClients.getAllClients();
+        StatusJSON json;
+        if (allClientsDB.Count == 0)
+        {
+
+            json = new StatusJSON("Error",null);
+            return BadRequest(json);
+        }
+
+        json = new StatusJSON("Ok", allClientsDB);
+         return Ok(json);
+
     }
 
     [HttpPost("getClient")]
-    public async Task<ActionResult<Client>> getClient(ID clientToGet)
+    public async Task<ActionResult<StatusJSON>> getClient(ID clientToGet)
     {
-        var client = clients.Find(h => h.cedula == clientToGet.cedula);
-        if (client == null)
+        ManageClients manageClients = new ManageClients();
+        Client client = manageClients.getClient(clientToGet.cedula.ToString());
+        StatusJSON result;
+        if (client.cedula == 0)
         {
-            var badResult = new StatusJSON("Error", null);
-            return BadRequest(badResult);
+            result = new StatusJSON("Error", null);
+            return BadRequest(result);
         }
 
-        var validResult = new StatusJSON("Ok", client);
-        return Ok(validResult);
+        result = new StatusJSON("Ok", client);
+        return Ok(result);
     }
 
     [HttpDelete("deleteClient")]
-    public async Task<ActionResult<Client>> deleteClient(ID clientToDelete)
+    public async Task<ActionResult<StatusJSON>> deleteClient(ID clientToDelete)
     {
-        var client = clients.Find(h => h.cedula == clientToDelete.cedula);
-        if (client==null)
+        ManageClients manageClients = new ManageClients();
+        var clientDeletion = manageClients.deleteClient(clientToDelete.cedula.ToString());
+        StatusJSON json;
+        Console.WriteLine(clientDeletion);
+        if (clientDeletion == false)
         {
-            return BadRequest("Client not found");
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
+
+        }else {
+            json = new StatusJSON("Ok", "Deleted Succesfully");
+            return Ok(json);
         }
-
-        clients.Remove(client);
-
-        return Ok(clients);
-
 
     }
 
@@ -63,7 +97,7 @@ public class ClientController: ControllerBase
         }
 
         client.nombreCompleto = clientToUpdate.nombreCompleto;
-        client.telefonos = clientToUpdate.telefonos;
+        //client.telefonos = clientToUpdate.telefonos;
         client.correo = clientToUpdate.correo;
         client.direccion = clientToUpdate.direccion;
         client.usuario = clientToUpdate.usuario;
