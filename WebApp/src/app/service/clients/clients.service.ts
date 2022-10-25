@@ -46,10 +46,4 @@ export class ClientsService {
     let direccion = this.url + "addClient";
     return this.http.post(direccion,form)
   }
-
-  //TEST
-  getWorkerTest():Observable<ResponseI>{
-    let direccion = this.url + "UserControllerTest";
-    return this.http.get<ResponseI>(direccion);
-  }
 }

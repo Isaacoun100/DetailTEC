@@ -13,6 +13,11 @@ import {ClientsComponent} from './components/clients/clients.component'
 import {ViewClientComponent} from './components/view-client/view-client.component';
 import {EditClientComponent} from './components/edit-client/edit-client.component';
 import { NewClientComponent } from './components/new-client/new-client.component';
+import { BranchesComponent } from './components/branches/branches.component';
+import { ViewBranchComponent } from './components/view-branch/view-branch.component';
+import { EditBranchComponent } from './components/edit-branch/edit-branch.component';
+import { NewBranchComponent } from './components/new-branch/new-branch.component';
+
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -27,6 +32,10 @@ const routes: Routes = [
   {path:'viewClient/:id',component:ViewClientComponent},
   {path:'editClient/:id',component:EditClientComponent},
   {path:'newClient',component:NewClientComponent},
+  {path:'branches', component:BranchesComponent},
+  {path:'viewBranch/:id',component:ViewBranchComponent},
+  {path:'editBranch/:id',component:EditBranchComponent},
+  {path:'newBranch',component:NewBranchComponent},
   {path:'test-info', component:ConnectionTestComponent},//TEST
 ];
 
@@ -37,4 +46,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routingComponents = [ConnectionTestComponent,HomeComponent,LoginAdminComponent,LoginClientComponent,
   HomeAdminComponent,WorkersComponent,ViewWorkerComponent,EditWorkerComponent,NewWorkerComponent,
-  ClientsComponent,ViewClientComponent,EditClientComponent,NewClientComponent]
+  ClientsComponent,ViewClientComponent,EditClientComponent,NewClientComponent,BranchesComponent,
+  ViewBranchComponent,EditBranchComponent,NewBranchComponent]
