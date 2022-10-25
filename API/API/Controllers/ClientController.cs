@@ -90,20 +90,17 @@ public class ClientController: ControllerBase
     [HttpPut("updateClient")]
     public async Task<ActionResult<Client>> updateClient(Client clientToUpdate)
     {
-        var client = clients.Find(h => h.cedula == clientToUpdate.cedula);
-        if (client == null)
+        ManageClients manageClients = new ManageClients();
+        var updatedClient = manageClients.updateClient(clientToUpdate);
+        StatusJSON json;
+        if (!updatedClient)
         {
-            return BadRequest("Client not found");
+            json = new StatusJSON("Error",null);
+            return BadRequest(json);
         }
 
-        client.nombreCompleto = clientToUpdate.nombreCompleto;
-        //client.telefonos = clientToUpdate.telefonos;
-        client.correo = clientToUpdate.correo;
-        client.direccion = clientToUpdate.direccion;
-        client.usuario = clientToUpdate.usuario;
-        client.contrasena = clientToUpdate.contrasena;
-
-        return Ok(client);
+        json = new StatusJSON("Ok", "Client Updated");
+        return Ok(json);
 
     }
     
