@@ -66,7 +66,7 @@ public class ManageClients {
         return clientList;
 
     }
-    
+
     public bool addClient(Client newClient) {
 
         if (!getClient(newClient.cedula.ToString()).cedula.Equals('0')) {
@@ -76,6 +76,14 @@ public class ManageClients {
                 " VALUES ({0},'{1}',{2},'{3}','{4}','{5}','{6}')",
                 newClient.cedula, newClient.nombreCompleto, newClient.puntos.ToString(), newClient.contrasena,
                 newClient.correo, newClient.usuario, newClient.direccion);
+            
+            
+            for (int i = 0; i < newClient.telefonos.Count; i++) {
+                queryString += string.Format(
+                    "\nINSERT INTO Telefonos_por_Cliente (cliente, telefono)" +
+                    " VALUES ({0},{1})",
+                    newClient.cedula, newClient.telefonos[i]);
+            }
             
             Console.WriteLine(queryString);
 
@@ -87,7 +95,7 @@ public class ManageClients {
                 Console.WriteLine(e);
                 return false;
             }
-            
+
         }
         
         return false;
