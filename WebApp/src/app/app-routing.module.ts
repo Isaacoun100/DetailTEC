@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from './components/home/home.component'
-import {ConnectionTestComponent} from './components/connection-test/connection-test.component'
-import {LoginAdminComponent} from './components/login-admin/login-admin.component'
-import {LoginClientComponent} from './components/login-client/login-client.component'
-import {HomeAdminComponent} from './components/home-admin/home-admin.component'
-import {WorkersComponent} from './components/workers/workers.component'
-import {ViewWorkerComponent} from './components/view-worker/view-worker.component'
-import {NewWorkerComponent} from './components/new-worker/new-worker.component'
-import {EditWorkerComponent} from './components/edit-worker/edit-worker.component'
-import {ClientsComponent} from './components/clients/clients.component'
-import {ViewClientComponent} from './components/view-client/view-client.component';
-import {EditClientComponent} from './components/edit-client/edit-client.component';
+import { HomeComponent } from './components/home/home.component'
+import { ConnectionTestComponent } from './components/connection-test/connection-test.component'
+import { LoginAdminComponent } from './components/login-admin/login-admin.component'
+import { LoginClientComponent } from './components/login-client/login-client.component'
+import { HomeAdminComponent } from './components/home-admin/home-admin.component'
+import { WorkersComponent } from './components/workers/workers.component'
+import { ViewWorkerComponent } from './components/view-worker/view-worker.component'
+import { NewWorkerComponent } from './components/new-worker/new-worker.component'
+import { EditWorkerComponent } from './components/edit-worker/edit-worker.component'
+import { ClientsComponent } from './components/clients/clients.component'
+import { ViewClientComponent } from './components/view-client/view-client.component';
+import { EditClientComponent } from './components/edit-client/edit-client.component';
 import { NewClientComponent } from './components/new-client/new-client.component';
 import { BranchesComponent } from './components/branches/branches.component';
 import { ViewBranchComponent } from './components/view-branch/view-branch.component';
@@ -25,7 +25,10 @@ import { TypesWashingComponent } from './components/types-washing/types-washing.
 import { ViewTypesWashingComponent } from './components/view-types-washing/view-types-washing.component';
 import { EditTypesWashingComponent } from './components/edit-types-washing/edit-types-washing.component';
 import { NewTypesWashingComponent } from './components/new-types-washing/new-types-washing.component';
-
+import { ProductsSuppliesComponent } from './components/products-supplies/products-supplies.component';
+import { ViewProductComponent } from './components/view-product/view-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { NewProductComponent } from './components/new-product/new-product.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -52,6 +55,10 @@ const routes: Routes = [
   {path:'viewTypeWashing/:id',component:ViewTypesWashingComponent},
   {path:'editTypeWashing/:id',component:EditTypesWashingComponent},
   {path:'newTypeWashing',component:NewTypesWashingComponent},
+  {path:'products', component:ProductsSuppliesComponent},
+  {path:'viewProduct/:id',component:ViewProductComponent},
+  {path:'editProduct/:id',component:EditProductComponent},
+  {path:'newProduct',component:NewProductComponent},
   {path:'test-info', component:ConnectionTestComponent},//TEST
 ];
 
@@ -65,4 +72,5 @@ export const routingComponents = [ConnectionTestComponent,HomeComponent,LoginAdm
   ClientsComponent,ViewClientComponent,EditClientComponent,NewClientComponent,BranchesComponent,
   ViewBranchComponent,EditBranchComponent,NewBranchComponent,ProvidersComponent,ViewProviderComponent,
   EditProviderComponent,NewProviderComponent,TypesWashingComponent,ViewTypesWashingComponent,
-  EditTypesWashingComponent,NewTypesWashingComponent]
+  EditTypesWashingComponent,NewTypesWashingComponent,ProductsSuppliesComponent,ViewProductComponent,
+  EditProductComponent,NewProductComponent]

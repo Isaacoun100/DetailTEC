@@ -46,9 +46,4 @@ export class TypesWashingService {
     let direccion = this.url + "addCarWashType";
     return this.http.post(direccion,form)
   }
-  //TEST
-  getTest():Observable<ResponseI>{
-    let direccion = this.url + "UserControllerTest";
-    return this.http.get<ResponseI>(direccion);
-  }
 }

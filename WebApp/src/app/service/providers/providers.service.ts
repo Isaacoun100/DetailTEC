@@ -46,9 +46,4 @@ export class ProvidersService {
     let direccion = this.url + "addProvider";
     return this.http.post(direccion,form)
   }
-  //TEST
-  getTest():Observable<ResponseI>{
-    let direccion = this.url + "UserControllerTest";
-    return this.http.get<ResponseI>(direccion);
-  }
 }

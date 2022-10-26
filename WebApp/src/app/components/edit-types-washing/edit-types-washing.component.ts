@@ -4,7 +4,7 @@ import {SingleTypeWashingI} from '../../models/types-washing/singleTypeWashing.i
 import {TypesWashingRequestI} from '../../models/types-washing/typeWashingRequest.interface'
 import {ResponseI} from '../../models/response.interface'
 import {TypesWashingService} from '../../service/types-washing/types-washing.service'
-import {FormGroup, FormControl,FormArray} from '@angular/forms'
+import {FormGroup, FormControl} from '@angular/forms'
 
 @Component({
   selector: 'app-edit-types-washing',
