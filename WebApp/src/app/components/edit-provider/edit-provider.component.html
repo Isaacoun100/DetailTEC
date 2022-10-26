@@ -2,50 +2,49 @@
 
 <div class="container">
   <form [formGroup]="editForm" (ngSubmit)="putForm(editForm.value)">
-    <label for="exampleFormControlInput1">{{ editForm.value.nombre }}</label>
-    <br /><br />
     <div class="form-group row">
       <div class="col">
-        <label for="exampleFormControlInput1">Ubicacion</label>
+        <label for="exampleFormControlInput1">Nombre</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Ubicacion"
-          formControlName="ubicacion"
+          placeholder="Nombre"
+          formControlName="nombre"
         />
       </div>
       <div class="col">
-        <label for="exampleFormControlInput1">Telefono</label>
+        <label for="exampleFormControlInput1">Direccion</label>
         <input
-          type="number"
+          type="text"
           class="form-control"
-          placeholder="Telefono"
-          formControlName="telefono"
+          placeholder="Direccion"
+          formControlName="direccion"
         />
       </div>
     </div>
     <br /><br />
     <div class="form-group row">
       <div class="col">
-        <label for="exampleFormControlInput1">Gerente</label>
+        <label for="exampleFormControlInput1">Correo</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Gerente"
-          formControlName="gerente"
+          placeholder="Correo"
+          formControlName="correo"
         />
       </div>
       <div class="col">
-        <label for="exampleFormControlInput1">Fecha Inicio Gerente</label>
+        <label for="exampleFormControlInput1">Contacto</label>
         <input
           type="text"
           class="form-control"
-          placeholder="Fecha Inicio Gerente"
-          formControlName="fechaInicioGerente"
+          placeholder="Contacto"
+          formControlName="contacto"
         />
       </div>
     </div>
-    <br /><br />
+    <br />
+    <br />
     <button type="submit" class="btn btn-primary">Actualizar</button>
     <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
   </form>

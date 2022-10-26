@@ -46,10 +46,4 @@ export class BranchesService {
     let direccion = this.url + "addBranch";
     return this.http.post(direccion,form)
   }
-
-  //TEST
-  getTest():Observable<ResponseI>{
-    let direccion = this.url + "UserControllerTest";
-    return this.http.get<ResponseI>(direccion);
-  }
 }

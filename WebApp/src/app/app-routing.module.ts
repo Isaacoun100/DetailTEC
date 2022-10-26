@@ -17,6 +17,14 @@ import { BranchesComponent } from './components/branches/branches.component';
 import { ViewBranchComponent } from './components/view-branch/view-branch.component';
 import { EditBranchComponent } from './components/edit-branch/edit-branch.component';
 import { NewBranchComponent } from './components/new-branch/new-branch.component';
+import { ProvidersComponent } from './components/providers/providers.component';
+import { ViewProviderComponent } from './components/view-provider/view-provider.component';
+import { EditProviderComponent } from './components/edit-provider/edit-provider.component';
+import { NewProviderComponent } from './components/new-provider/new-provider.component';
+import { TypesWashingComponent } from './components/types-washing/types-washing.component';
+import { ViewTypesWashingComponent } from './components/view-types-washing/view-types-washing.component';
+import { EditTypesWashingComponent } from './components/edit-types-washing/edit-types-washing.component';
+import { NewTypesWashingComponent } from './components/new-types-washing/new-types-washing.component';
 
 
 const routes: Routes = [
@@ -36,6 +44,14 @@ const routes: Routes = [
   {path:'viewBranch/:id',component:ViewBranchComponent},
   {path:'editBranch/:id',component:EditBranchComponent},
   {path:'newBranch',component:NewBranchComponent},
+  {path:'providers', component:ProvidersComponent},
+  {path:'viewProvider/:id',component:ViewProviderComponent},
+  {path:'editProvider/:id',component:EditProviderComponent},
+  {path:'newProvider',component:NewProviderComponent},
+  {path:'typesWashing', component:TypesWashingComponent},
+  {path:'viewTypeWashing/:id',component:ViewTypesWashingComponent},
+  {path:'editTypeWashing/:id',component:EditTypesWashingComponent},
+  {path:'newTypeWashing',component:NewTypesWashingComponent},
   {path:'test-info', component:ConnectionTestComponent},//TEST
 ];
 
@@ -47,4 +63,6 @@ export class AppRoutingModule { }
 export const routingComponents = [ConnectionTestComponent,HomeComponent,LoginAdminComponent,LoginClientComponent,
   HomeAdminComponent,WorkersComponent,ViewWorkerComponent,EditWorkerComponent,NewWorkerComponent,
   ClientsComponent,ViewClientComponent,EditClientComponent,NewClientComponent,BranchesComponent,
-  ViewBranchComponent,EditBranchComponent,NewBranchComponent]
+  ViewBranchComponent,EditBranchComponent,NewBranchComponent,ProvidersComponent,ViewProviderComponent,
+  EditProviderComponent,NewProviderComponent,TypesWashingComponent,ViewTypesWashingComponent,
+  EditTypesWashingComponent,NewTypesWashingComponent]

@@ -52,7 +52,7 @@ export class ViewWorkerComponent implements OnInit {
 
   delete(){
     this.api.deleteEmployee(this.workerRequest)
-    this.router.navigate(["workers"])
+    this.exit()
   }
 
   exit(){

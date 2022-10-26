@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="container">
+  <h3>Lista de Proveedores</h3>
+  <br />
+  <button type="button" class="btn btn-primary" (click)="newProvider()">
+    Nuevo Proveedor
+  </button>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Cedula Juridica</th>
+        <th scope="col">Nombre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <p>{{ error_msg }}</p>
+      <tr
+        *ngFor="let provider of providers"
+        (click)="viewProvider(provider.cedulaJuridica)"
+      >
+        <th scope="row">{{ provider.cedulaJuridica }}</th>
+        <td>{{ provider.nombre }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

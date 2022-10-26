@@ -49,7 +49,7 @@ export class ViewClientComponent implements OnInit {
 
   delete(){
     this.api.deleteClient(this.clientRequest)
-    this.router.navigate(["clients"])
+    this.exit()
   }
 
   exit(){
