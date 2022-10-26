@@ -10,15 +10,15 @@ public class ManageClients {
     
     public Client getClient(string cedula) {
         
-        List<List<String>> data =  dataBaseManager.ReadOrderData("SELECT * " +
+        List<List<String>> data =  dataBaseManager.ReadOrderData(String.Format("SELECT * " +
                                             "FROM Cliente " +
-                                            "WHERE cedula="+cedula);
+                                            "WHERE cedula='{0}'",cedula));
 
         Client client = new Client();
 
         if (data.Count!=0) {
             if (data[0][0].Contains("")) {
-                client.cedula = Convert.ToInt32(data[0][0]);
+                client.cedula = data[0][0];
                 client.nombreCompleto  = data[0][1];
 
                 try { client.puntos = Convert.ToInt32(data[0][2]); }
@@ -45,7 +45,7 @@ public class ManageClients {
 
         for (int i = 0; i < data.Count; i++) {
             if (data[i][0].Contains("")) {
-                client.cedula = Convert.ToInt32(data[i][0]);
+                client.cedula = data[i][0];
                 client.nombreCompleto  = data[i][1];
 
                 try { client.puntos = Convert.ToInt32(data[i][2]); }
@@ -68,11 +68,11 @@ public class ManageClients {
 
     public bool addClient(Client newClient) {
 
-        if (!getClient(newClient.cedula.ToString()).cedula.Equals('0')) {
+        if (!getClient(newClient.cedula).cedula.Equals("0")) {
 
             string queryString = string.Format(
                 "INSERT INTO Cliente (cedula, nombreCompleto, puntos, contrasena, correo, usuario, direccion)" +
-                " VALUES ({0},'{1}',{2},'{3}','{4}','{5}','{6}')",
+                " VALUES ('{0}','{1}',{2},'{3}','{4}','{5}','{6}')",
                 newClient.cedula, newClient.nombreCompleto, newClient.puntos.ToString(), newClient.contrasena,
                 newClient.correo, newClient.usuario, newClient.direccion);
             
@@ -80,7 +80,7 @@ public class ManageClients {
             for (int i = 0; i < newClient.telefonos.Count; i++) {
                 queryString += string.Format(
                     "\nINSERT INTO Telefonos_por_Cliente (cliente, telefono)" +
-                    " VALUES ({0},{1})",
+                    " VALUES ('{0}',{1})",
                     newClient.cedula, newClient.telefonos[i]);
             }
             
@@ -102,12 +102,12 @@ public class ManageClients {
     
     public bool deleteClient(string cedula) {
 
-        if (getClient(cedula).cedula!=0) {
+        if (!getClient(cedula).cedula.Equals("")) {
 
             dataBaseManager.ExecuteQuery(String.Format("DELETE FROM Telefonos_por_Cliente " +
-                                                       "WHERE cliente= {0} " +
+                                                       "WHERE cliente= '{0}' " +
                                                        "DELETE FROM Cliente " + 
-                                                       "WHERE cedula = {0} ",cedula));
+                                                       "WHERE cedula = '{0}' ",cedula));
             return true;
         }
 
@@ -119,41 +119,41 @@ public class ManageClients {
 
         Client updatedClient = getClient(newClient.cedula.ToString());
 
-        if (updatedClient.cedula==0)
+        if (updatedClient.cedula.Equals(""))
             return false;
 
         if (!newClient.nombreCompleto.Equals(""))
                 dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                         "SET nombreCompleto = '{0}' " +
-                                                        "WHERE cedula = {1};", 
+                                                        "WHERE cedula = '{1}';", 
                                                         newClient.nombreCompleto, newClient.cedula));
         if (newClient.puntos!=0)
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET puntos = {0} " +
-                                                       "WHERE cedula = {1};", 
+                                                       "WHERE cedula = '{1}';", 
                                                         newClient.puntos, newClient.cedula));
         
         if (!newClient.contrasena.Equals(""))
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET contrasena = '{0}' " +
-                                                       "WHERE cedula = {1};", 
+                                                       "WHERE cedula = '{1}';", 
                                                         newClient.contrasena, newClient.cedula));
         
         if (!newClient.correo.Equals(null))
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET correo = '{0}' " +
-                                                       "WHERE cedula = {1};", 
+                                                       "WHERE cedula = '{1}';", 
                                                         newClient.correo, newClient.cedula));
         
         if (!newClient.usuario.Equals(""))
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET usuario = '{0}' " +
-                                                       "WHERE cedula = {1};", 
+                                                       "WHERE cedula = '{1}';", 
                                                         newClient.usuario, newClient.cedula));
         if (!newClient.direccion.Equals(null))
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET direccion = '{0}' " +
-                                                       "WHERE cedula = {1};", 
+                                                       "WHERE cedula = '{1}';", 
                                                         newClient.direccion, newClient.cedula));
 
         return true;
@@ -170,7 +170,7 @@ public class ManageClients {
 
         if (data.Count != 0) {
             if (data[0][0].Contains("")) {
-                client.cedula = Convert.ToInt32(data[0][0]);
+                client.cedula = data[0][0];
                 client.nombreCompleto = data[0][1];
 
                 try {
