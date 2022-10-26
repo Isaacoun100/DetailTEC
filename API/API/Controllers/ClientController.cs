@@ -58,7 +58,7 @@ public class ClientController: ControllerBase
         ManageClients manageClients = new ManageClients();
         Client client = manageClients.getClient(clientToGet.cedula.ToString());
         StatusJSON result;
-        if (client.cedula == 0)
+        if (client.cedula.Equals(""))
         {
             result = new StatusJSON("Error", null);
             return BadRequest(result);
