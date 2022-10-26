@@ -18,14 +18,14 @@ public class LoginClientController: ControllerBase
 
         Client requestedClient = manageClients.loginClient(credentials.correo, credentials.contrasena);
         StatusJSON json;
-        if (requestedClient.cedula == 0)
+        if (requestedClient.cedula.Equals(""))
         {
             json = new StatusJSON("Error", null);
             return BadRequest(json);
         }
 
         ID clientID = new ID();
-        clientID.cedula = requestedClient.cedula;
+        clientID.cedula =Int32.Parse(requestedClient.cedula);
         json = new StatusJSON("Ok", clientID);
         return Ok(json);
     }
