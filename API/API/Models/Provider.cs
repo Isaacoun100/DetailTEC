@@ -8,4 +8,7 @@ public class Provider
     public string correo { get; set; } = string.Empty;
     public string contacto { get; set; } = string.Empty;
     
+    //Se debe añadir un listado de los productos que provee ese proveedor especifico algo como
+    //public List<String> productList { get; set; } 
+
 }
