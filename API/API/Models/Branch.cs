@@ -13,4 +13,6 @@ public class Branch
     public int gerente { get; set; }
     public string telefono { get; set; } = string.Empty;
     
+    // A list of employees that work in that branch may be useful, [Low priority]
+    
 }
