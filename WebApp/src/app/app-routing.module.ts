@@ -29,6 +29,10 @@ import { ProductsSuppliesComponent } from './components/products-supplies/produc
 import { ViewProductComponent } from './components/view-product/view-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
+import { AppointmentsComponent } from './components/appointments/appointments.component';
+import { ViewAppointmentComponent } from './components/view-appointment/view-appointment.component';
+import { EditAppointmentComponent } from './components/edit-appointment/edit-appointment.component';
+import { NewAppointmentComponent } from './components/new-appointment/new-appointment.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -59,6 +63,10 @@ const routes: Routes = [
   {path:'viewProduct/:id',component:ViewProductComponent},
   {path:'editProduct/:id',component:EditProductComponent},
   {path:'newProduct',component:NewProductComponent},
+  {path:'appointments', component:AppointmentsComponent},
+  {path:'viewAppointment/:id',component:ViewAppointmentComponent},
+  {path:'editAppointment/:id',component:EditAppointmentComponent},
+  {path:'newAppointment',component:NewAppointmentComponent},
   {path:'test-info', component:ConnectionTestComponent},//TEST
 ];
 
@@ -73,4 +81,5 @@ export const routingComponents = [ConnectionTestComponent,HomeComponent,LoginAdm
   ViewBranchComponent,EditBranchComponent,NewBranchComponent,ProvidersComponent,ViewProviderComponent,
   EditProviderComponent,NewProviderComponent,TypesWashingComponent,ViewTypesWashingComponent,
   EditTypesWashingComponent,NewTypesWashingComponent,ProductsSuppliesComponent,ViewProductComponent,
-  EditProductComponent,NewProductComponent]
+  EditProductComponent,NewProductComponent,AppointmentsComponent,ViewAppointmentComponent,
+  EditAppointmentComponent,NewAppointmentComponent]
