@@ -2,9 +2,7 @@ namespace API.Models;
 
 public class PointsManager
 {
-    public int cedula { get; set; }
-    public int anadirPuntos { get; set; }
-    public int sustraerPuntos {get; set;}
-    
+    public string cedula { get; set; } = string.Empty;
+    public String puntos { get; set; } = string.Empty;
     
 }

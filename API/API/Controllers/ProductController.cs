@@ -1,5 +1,6 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using API.RequestFromDatabase;
 
 namespace API.Controllers;
 
@@ -13,50 +14,81 @@ public class ProductController: ControllerBase
     [HttpPost("getProduct")]
     public async Task<ActionResult<Product>> getProduct(string productToFind)
     {
-        var product = products.Find(h => h.nombre == productToFind);
-        if (product == null)
+        ManageProduct manageProduct = new ManageProduct();
+        Product product = manageProduct.getProduct(productToFind);
+        StatusJSON result;
+        if (product.nombre.Equals(""))
         {
-            return BadRequest("Product not found");
+            result = new StatusJSON("Error", null);
+            return BadRequest(result);
+        }
+        result = new StatusJSON("Ok", product);
+        return Ok(result);
+    }
+    
+    [HttpGet("getAllProducts")]
+    public async Task<ActionResult<List<Product>>> getAllProducts()
+    {
+        List<Product> allProducts = new List<Product>();
+        ManageProduct manageProduct = new ManageProduct();
+        allProducts = manageProduct.getAllProducts();
+        StatusJSON json;
+        if (allProducts.Count == 0)
+        {
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
 
-        return Ok(product);
+        json = new StatusJSON("Ok", allProducts);
+        return Ok(json);
+
     }
 
     [HttpPost("addProduct")]
     public async Task<ActionResult<Product>> addProduct(Product newProduct)
     {
-        products.Add(newProduct);
-        return Ok(products);
+        ManageProduct manageProduct = new ManageProduct();
+        var addedProduct = manageProduct.addProduct(newProduct);
+        StatusJSON json;
+        if (!addedProduct)
+        {
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
+            
+        }
+
+        json = new StatusJSON("OK", "Product added succesfully");
+        return Ok(json);
     }
 
     [HttpDelete("deleteProduct")]
     public async Task<ActionResult<Product>> deleteProduct(string productToDelete)
     {
-        var product = products.Find(h => h.nombre == productToDelete);
-        if (product == null)
+        ManageProduct manageProduct = new ManageProduct();
+        var deletedProduct = manageProduct.deletePrduct(productToDelete);
+        StatusJSON json;
+        if (!deletedProduct)
         {
-            return BadRequest("Product not found");
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
-
-        products.Remove(product);
-        return Ok(products);
+        json = new StatusJSON("Ok", "product deleted succesfully");
+        return Ok(json);
     }
 
     [HttpPut("updateProduct")]
     public async Task<ActionResult<Product>> updateProduct(Product productToUpdate)
     {
-        var product = products.Find(h => h.nombre == productToUpdate.nombre);
-        if (product == null)
+        ManageProduct manageProduct = new ManageProduct();
+        StatusJSON json;
+        var updatedProduct = manageProduct.updateProduct(productToUpdate);
+        if (!updatedProduct)
         {
-            return BadRequest("Product not found");
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
-
-        product.nombre = productToUpdate.nombre;
-        product.marca = productToUpdate.marca;
-        product.costo = productToUpdate.costo;
-        product.proveedores = productToUpdate.proveedores;
-
-        return Ok(products);
+        json = new StatusJSON("Ok", "Product updated succesfully");
+        return Ok(json);
 
     }
 

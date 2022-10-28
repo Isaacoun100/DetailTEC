@@ -1,5 +1,6 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using API.RequestFromDatabase;
 
 namespace API.Controllers;
 
@@ -10,11 +11,41 @@ public class BranchController : ControllerBase
     private static List<Branch> branches = new List<Branch>();
 
 
+    [HttpPost("getBranch")]
+    public async Task<ActionResult<Branch>> getBranch(BranchName branchName)
+    {
+        ManageBranches manageBranches = new ManageBranches();
+        Branch requestedBranch = manageBranches.getBranch(branchName.branchName);
+        StatusJSON json;
+        if (requestedBranch.nombre == "")
+        {
+            json = new StatusJSON("error", null);
+            return BadRequest(json);
+
+        }
+
+        json = new StatusJSON("ok", requestedBranch);
+        return Ok(json);
+
+    }
+
+    
+    
     [HttpPost("addBranch")]
     public async Task<ActionResult<Branch>> addBranch(Branch newBranch)
     {
-        branches.Add(newBranch);
-        return Ok(branches);
+        ManageBranches manageBranches = new ManageBranches();
+        var addedBranch = manageBranches.addBranch(newBranch);
+        StatusJSON json;
+        if (!addedBranch)
+        {
+            json = new StatusJSON("error", null);
+            return BadRequest(json);
+
+        }
+
+        json = new StatusJSON("ok", "branch added succesfully");
+        return Ok(json);
 
     }
 

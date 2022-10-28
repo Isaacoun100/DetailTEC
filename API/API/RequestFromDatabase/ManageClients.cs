@@ -202,4 +202,33 @@ public class ManageClients {
 
         return client;
     }
+    
+    public PointsManager getClientPoints(string ID)
+    {
+        List<List<String>> data =  dataBaseManager.ReadOrderData(String.Format("SELECT * " +
+                                                                               "FROM Cliente " +
+                                                                               "WHERE cedula='{0}'",ID));
+        
+        PointsManager pointsManager = new PointsManager();
+        if (data.Count != 0)
+        {
+            pointsManager.cedula = data[0][0];
+            try
+            {
+                pointsManager.puntos = data[0][2];
+            }
+            catch (Exception e)
+            {
+                pointsManager.puntos = "";
+            }
+            
+        }
+
+        return pointsManager;
+    }
+    
+    
+    
+    
+    
 }
