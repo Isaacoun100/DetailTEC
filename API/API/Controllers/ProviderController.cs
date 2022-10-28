@@ -1,5 +1,6 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using API.RequestFromDatabase;
 
 namespace API.Controllers;
 
@@ -12,59 +13,84 @@ public class ProviderController : ControllerBase
     [HttpPost("addProvider")]
     public async Task<ActionResult<Provider>> addProvider(Provider newProvider)
     {
-        providers.Add(newProvider);
-        return Ok(providers);
+        ManageProviders manageProviders = new ManageProviders();
+        var addedProvider = manageProviders.addProvider(newProvider);
+        StatusJSON json;
+        if (!addedProvider)
+        {
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
+        }
+
+        json = new StatusJSON("Ok", newProvider);
+        return Ok(json);
     }
 
     [HttpPost("getProvider")]
     public async Task<ActionResult<Provider>> getProvider(ProviderID providerId)
     {
-        var provider = providers.Find(h => h.cedulaJuridica == providerId.cedulaJuridica);
-        if (provider == null)
+        ManageProviders manageProviders = new ManageProviders();
+        Provider provider = manageProviders.getProvider(providerId.cedulaJuridica.ToString());
+        StatusJSON json;
+        if (provider.cedulaJuridica.Equals(0))
         {
-            BadRequest("Provider not found");
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
 
-        return Ok(provider);
+        json = new StatusJSON("Ok", provider);
+        return Ok(json);
     }
 
     [HttpDelete("deleteProvider")]
     public async Task<ActionResult<Provider>> deleteProvider(ProviderID providerId)
     {
-        var providerToDelete = providers.Find(h => h.cedulaJuridica == providerId.cedulaJuridica);
-        if (providerId == null)
+        ManageProviders manageProviders = new ManageProviders();
+        var deletedProvider = manageProviders.deleteProvider(providerId.cedulaJuridica.ToString());
+        StatusJSON json;
+        if (!deletedProvider)
         {
-            return BadRequest("Provider not found");
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
 
-        providers.Remove(providerToDelete);
-        return Ok(providers);
+        json = new StatusJSON("Ok", "provider deleted succesfully");
+        return Ok(json);
+    }
+
+    [HttpGet("getAllProviders")]
+    public async Task<ActionResult<List<Provider>>> getAllProviders()
+    {
+        ManageProviders manageProviders = new ManageProviders();
+        List<Provider> allProviders = new List<Provider>();
+        allProviders = manageProviders.getAllProviders();
+        StatusJSON json;
+        if (allProviders.Count == 0)
+        {
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
+        }
+
+        json = new StatusJSON("Ok", allProviders);
+        return Ok(json);
     }
 
     [HttpPut("updateProvider")]
     public async Task<ActionResult<Provider>> updateProvider(Provider providerToUpdate)
     {
-        var provider = providers.Find(h => h.cedulaJuridica == providerToUpdate.cedulaJuridica);
-        if (provider == null)
+        ManageProviders manageProviders = new ManageProviders();
+        var updatedProvider = manageProviders.updateProvider(providerToUpdate);
+        StatusJSON json;
+        if (!updatedProvider)
         {
-            return BadRequest("Provider not found");
+            json = new StatusJSON("Error", null);
+            return BadRequest(json);
         }
 
-        provider.nombre = providerToUpdate.nombre;
-        provider.direccion = providerToUpdate.direccion;
-        provider.correo = providerToUpdate.correo;
-        provider.contacto = providerToUpdate.contacto;
+        json = new StatusJSON("Ok", "Provider updated succesfully");
+        return Ok(json);
 
-        return Ok(providers);
     }
-    
-    
-
-
-
-
-
-
 
 
 }
