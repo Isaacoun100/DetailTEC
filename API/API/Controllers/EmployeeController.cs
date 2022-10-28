@@ -86,10 +86,12 @@ public class EmployeeController: ControllerBase
         ManageEmployees employees = new ManageEmployees();
         var deletedEmployee = employees.deleteEmployee(employeeToDelete.cedula.ToString());
         StatusJSON json;
+
         if (!deletedEmployee)
         {
             json = new StatusJSON("error", null);
             return BadRequest(json);
+            
         }
 
         json = new StatusJSON("ok", employeeToDelete);
