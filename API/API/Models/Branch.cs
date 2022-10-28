@@ -9,7 +9,7 @@ public class Branch
     public string fechaApertura { get; set; } = string.Empty;
     
     //Ubicacion should be splitted into 3 (provincia, canton, distrito) 
-    public string ubicacion { get; set; } = string.Empty;
+    public List<string> ubicacion { get; set; }
     public int gerente { get; set; }
     public string telefono { get; set; } = string.Empty;
     

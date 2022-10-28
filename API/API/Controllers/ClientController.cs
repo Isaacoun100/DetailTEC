@@ -8,8 +8,6 @@ namespace API.Controllers;
 [ApiController]
 public class ClientController: ControllerBase
 {
-    private static List<Client> clients = new List<Client>();
-
 
     [HttpPost("addClient")]
     public async Task<ActionResult<StatusJSON>> addClient(Client newClient)
@@ -109,6 +107,22 @@ public class ClientController: ControllerBase
     
 
 
+    [HttpPost("getClientPoints")]
+    public async Task<ActionResult<StatusJSON>> getClientPoints(ID clientID)
+    {
+        ManageClients manageClients = new ManageClients();
+        PointsManager pointsManager = new PointsManager();
+        pointsManager = manageClients.getClientPoints(clientID.cedula.ToString());
+        StatusJSON json;
+        if (pointsManager.puntos == "")
+        {
+            json = new StatusJSON("error", null);
+            return BadRequest(json);
+        }
+
+        json = new StatusJSON("ok", pointsManager);
+        return Ok(json);
+    }
 
 
 

@@ -29,5 +29,33 @@ public class LoginClientController: ControllerBase
         json = new StatusJSON("ok", clientID);
         return Ok(json);
     }
+    
+    [HttpPost("authMobile")]
+    public async Task<ActionResult<Client>> authMobile(CredentialsClient credentialsClient)
+    {
+        ManageClients manageClients = new ManageClients();
+
+        Client requestedClient = manageClients.loginClient(credentialsClient.correo, credentialsClient.contrasena);
+        if (requestedClient.cedula.Equals(""))
+        {
+            List<int> phones = new List<int>();
+            Client badClient = new Client();
+            badClient.nombreCompleto = "";
+            badClient.cedula = "";
+            badClient.contrasena = "";
+            badClient.correo = "";
+            badClient.usuario = "";
+            badClient.direccion = "";
+            badClient.puntos = 0;
+            badClient.telefonos = phones;
+            
+            return BadRequest(badClient);
+        }
+
+        
+        return Ok(requestedClient);
+
+        
+    }
 
 }
