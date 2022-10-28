@@ -50,35 +50,36 @@ public class BranchController : ControllerBase
     }
 
     [HttpPost("deleteBranch")]
-    public async Task<ActionResult<Branch>> deleteBranch(int cedulaGerente)
+    public async Task<ActionResult<Branch>> deleteBranch(BranchName branchName)
     {
 
-        var deleteBranch = branches.Find(h => h.gerente == cedulaGerente);
-        if (deleteBranch == null)
+        ManageBranches manageBranches = new ManageBranches();
+        var deletedBranch = manageBranches.deleteBranch(branchName.branchName);
+        StatusJSON json;
+        if (!deletedBranch)
         {
-            BadRequest("Branch not found");
+            json = new StatusJSON("error", null);
+            return BadRequest(json);
         }
+        json = new StatusJSON("ok", "branch deleted succesfully");
+        return Ok(json);
 
-        branches.Remove(deleteBranch);
-        return Ok(branches);
 
     }
 
     [HttpPut("updateBranch")]
     public async Task<ActionResult<Branch>> updateBranch(Branch updatedBranch)
     {
-        var branch = branches.Find(h => h.gerente == updatedBranch.gerente);
-        if (branch == null)
+        ManageBranches manageBranches = new ManageBranches();
+        var booleanUpdate = manageBranches.updateBranch(updatedBranch);
+        StatusJSON json;
+        if (!booleanUpdate)
         {
-            BadRequest("Branch not found");
+            json = new StatusJSON("error", null);
+            return BadRequest(json);
         }
-
-        branch.nombre = updatedBranch.nombre;
-        branch.fechaInicioGerente = updatedBranch.fechaInicioGerente;
-        branch.ubicacion = updatedBranch.ubicacion;
-        branch.telefono = updatedBranch.telefono;
-
-        return Ok(branches);
+        json = new StatusJSON("ok", "branch updated succesfully");
+        return Ok(json);
     }
     
     
