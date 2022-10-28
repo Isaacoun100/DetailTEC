@@ -13,11 +13,16 @@ public class ManageClients {
         List<List<String>> data =  dataBaseManager.ReadOrderData(String.Format("SELECT * " +
                                             "FROM Cliente " +
                                             "WHERE cedula='{0}'",cedula));
+        
+        List<List<String>> numberData =  dataBaseManager.ReadOrderData(String.Format("SELECT telefono " +
+                                            "FROM Telefonos_por_Cliente " +
+                                            "WHERE cliente='{0}'",cedula));
+        
 
         Client client = new Client();
 
         if (data.Count!=0) {
-            if (data[0][0].Equals("")) {
+            if (!data[0][0].Equals("")) {
                 client.cedula = data[0][0];
                 client.nombreCompleto  = data[0][1];
 
@@ -28,6 +33,11 @@ public class ManageClients {
                 client.correo = data[0][4];
                 client.usuario = data[0][5];
                 client.direccion = data[0][6];
+
+                for (int i = 0; i < numberData.Count; i++) {
+                    client.telefonos.Add( Convert.ToInt32(numberData[i][0]) );
+                }
+                
             }
         }
 
@@ -44,7 +54,7 @@ public class ManageClients {
         Client client = new Client();
 
         for (int i = 0; i < data.Count; i++) {
-            if (data[i][0].Equals("")) {
+            if (!data[i][0].Equals("")) {
                 client.cedula = data[i][0];
                 client.nombreCompleto  = data[i][1];
 
@@ -104,10 +114,13 @@ public class ManageClients {
 
         if (!getClient(cedula).cedula.Equals("")) {
 
-            dataBaseManager.ExecuteQuery(String.Format("DELETE FROM Telefonos_por_Cliente " +
+            dataBaseManager.ExecuteQuery(String.Format("DELETE FROM Citas_por_Cliente " +
+                                                       "WHERE cedula_cliente ='{0}' " +
+                                                       "DELETE FROM Telefonos_por_Cliente " +
                                                        "WHERE cliente= '{0}' " +
                                                        "DELETE FROM Cliente " + 
                                                        "WHERE cedula = '{0}' ",cedula));
+                                                       
             return true;
         }
 
@@ -139,7 +152,7 @@ public class ManageClients {
                                                        "WHERE cedula = '{1}';", 
                                                         newClient.contrasena, newClient.cedula));
         
-        if (!newClient.correo.Equals(null))
+        if (!newClient.correo.Equals(""))
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET correo = '{0}' " +
                                                        "WHERE cedula = '{1}';", 
@@ -150,7 +163,7 @@ public class ManageClients {
                                                        "SET usuario = '{0}' " +
                                                        "WHERE cedula = '{1}';", 
                                                         newClient.usuario, newClient.cedula));
-        if (!newClient.direccion.Equals(null))
+        if (!newClient.direccion.Equals(""))    
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Cliente " +
                                                        "SET direccion = '{0}' " +
                                                        "WHERE cedula = '{1}';", 
@@ -169,7 +182,7 @@ public class ManageClients {
         Client client = new Client();
 
         if (data.Count != 0) {
-            if (data[0][0].Equals("")) {
+            if (!data[0][0].Equals("")) {
                 client.cedula = data[0][0];
                 client.nombreCompleto = data[0][1];
 
