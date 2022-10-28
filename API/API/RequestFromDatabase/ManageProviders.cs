@@ -20,17 +20,17 @@ public class ManageProviders {
         Provider provider = new Provider();
 
         if (proveedor.Count!=0) {
-            if (proveedor[0][1].Contains("0")) {
+            if (!proveedor[0][1].Equals("0")) {
                 provider.nombre = proveedor[0][0];
                 provider.cedulaJuridica  = Convert.ToInt32(proveedor[0][1]);
-                provider.direccion = proveedor[0][3];
-                provider.correo = proveedor[0][4];
-                provider.contacto = proveedor[0][5];
+                provider.direccion = proveedor[0][2];
+                provider.correo = proveedor[0][3];
+                provider.contacto = proveedor[0][4];
 
                 // Uncomment when the Provider class has productList 
-                // for (int i = 0; i < productos_por_proveedor.Count; i++) {
-                //     provider.productList.Add(productos_por_proveedor[i][0]);
-                // }
+                for (int i = 0; i < productos_por_proveedor.Count; i++) {
+                    provider.productList.Add(productos_por_proveedor[i][1]);
+                }
                 
             }
         }
@@ -39,7 +39,7 @@ public class ManageProviders {
 
     }
     
-    public List<Provider> getAllProviders(string cedulaJuridica) {
+    public List<Provider> getAllProviders() {
         
         List<List<String>> proveedor =  dataBaseManager.ReadOrderData(String.Format(
             "SELECT * " +
@@ -54,17 +54,17 @@ public class ManageProviders {
 
         for (int i = 0; i < proveedor.Count; i++) {
             
-            if (proveedor[i][1].Equals('0')) {
+            if (!proveedor[i][1].Equals('0')) {
                 provider.nombre = proveedor[i][0];
                 provider.cedulaJuridica  = Convert.ToInt32(proveedor[i][1]);
-                provider.direccion = proveedor[i][3];
-                provider.correo = proveedor[i][4];
-                provider.contacto = proveedor[i][5];
+                provider.direccion = proveedor[i][2];
+                provider.correo = proveedor[i][3];
+                provider.contacto = proveedor[i][4];
 
                 //Uncomment when the Provider class has productList 
-                //for (int j = 0; j < productos_por_proveedor.Count; j++)
-                //    if(productos_por_proveedor[j][0].Equals(provider.cedulaJuridica.ToString()))
-                //        provider.productList.Add(productos_por_proveedor[j][1]);
+                for (int j = 0; j < productos_por_proveedor.Count; j++)
+                    if(productos_por_proveedor[j][0].Equals(provider.cedulaJuridica.ToString()))
+                        provider.productList.Add(productos_por_proveedor[j][1]);
 
             }
 
@@ -87,12 +87,12 @@ public class ManageProviders {
                 newProvider.correo, newProvider.contacto);
 
 
-                // for (int i = 0; i < newProvider.productList.Count; i++) {
-            //     queryString += string.Format(
-            //         "\n INSERT INTO Producto_por_Proveedor(cedula_proveedor, nombre_producto)" +
-            //         " VALUES ('{0}',{1})",
-            //         newProvider.cedulaJuridica, newProvider.productList[i]);
-            // }
+                for (int i = 0; i < newProvider.productList.Count; i++) {
+                queryString += string.Format(
+                    "\n INSERT INTO Producto_por_Proveedor(cedula_proveedor, nombre_producto)" +
+                    " VALUES ({0},'{1}')",
+                    newProvider.cedulaJuridica, newProvider.productList[i]);
+            }
             
             Console.WriteLine(queryString);
 
@@ -114,15 +114,51 @@ public class ManageProviders {
 
         if (!getProvider(cedulaJuridica).cedulaJuridica.Equals("0")) {
 
-            dataBaseManager.ExecuteQuery(String.Format("DELETE FROM Proveedor " +
-                                                       "WHERE cedulaJuridica= {0} " +
-                                                       "DELETE FROM Producto_por_Proveedor " + 
-                                                       "WHERE cedula_proveedor = {0} ",cedulaJuridica));
+            dataBaseManager.ExecuteQuery(String.Format("DELETE FROM Producto_por_Proveedor " + 
+                                                        "WHERE cedula_proveedor = {0} "+
+                                                        "DELETE FROM Proveedor " + 
+                                                        "WHERE cedulaJuridica = {0} ",cedulaJuridica));
             return true;
         }
 
         return false;
 
     }
+    
+        public bool updateProvider(Provider newProvider) {
+
+        Provider updatedProvider = getProvider(newProvider.cedulaJuridica.ToString());
+
+        if (updatedProvider.cedulaJuridica.ToString().Equals("0"))
+            return false;
+
+        if (!newProvider.nombre.Equals(""))
+                dataBaseManager.ExecuteQuery(String.Format("UPDATE Proveedor " +
+                                                        "SET nombre = '{0}' " +
+                                                        "WHERE cedulaJuridica = {1};", 
+                                                        newProvider.nombre, newProvider.cedulaJuridica));
+        
+        if (!newProvider.direccion.Equals(""))
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Proveedor " +
+                                                       "SET direccion = '{0}' " +
+                                                       "WHERE cedulaJuridica = {1};", 
+                                                        newProvider.direccion, newProvider.cedulaJuridica));
+
+        if (!newProvider.correo.Equals(""))
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Proveedor " +
+                                                       "SET correo = '{0}' " +
+                                                       "WHERE cedulaJuridica = {1};", 
+                                                        newProvider.correo, newProvider.cedulaJuridica));
+        if (!newProvider.contacto.Equals(""))
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Proveedor " +
+                                                       "SET contacto = '{0}' " +
+                                                       "WHERE cedulaJuridica = {1};", 
+                                                        newProvider.contacto, newProvider.cedulaJuridica));
+
+        return true;
+
+    }
+    
+    
     
 }
