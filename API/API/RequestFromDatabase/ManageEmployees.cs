@@ -16,7 +16,7 @@ public class ManageEmployees {
         Employee employee = new Employee();
 
         if (data.Count!=0) {
-            if (data[0][0].Contains("")) {
+            if (data[0][0].Equals("")) {
                 
                 employee.cedula = Convert.ToInt32(data[0][0]);
                 employee.nombre  = data[0][1];
@@ -49,7 +49,7 @@ public class ManageEmployees {
         Employee employee = new Employee();
 
         for (int i = 0; i < data.Count; i++) {
-            if (data[i][0].Contains("")) {
+            if (data[i][0].Equals("")) {
                 
                 employee.cedula = Convert.ToInt32(data[i][0]);
                 employee.nombre  = data[i][1];
@@ -182,7 +182,7 @@ public class ManageEmployees {
         Employee employee = new Employee();
 
         if (data.Count!=0) {
-            if (data[0][0].Contains("")) {
+            if (data[0][0].Equals("")) {
                 
                 employee.cedula = Convert.ToInt32(data[0][0]);
                 employee.nombre  = data[0][1];

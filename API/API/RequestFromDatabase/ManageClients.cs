@@ -17,7 +17,7 @@ public class ManageClients {
         Client client = new Client();
 
         if (data.Count!=0) {
-            if (data[0][0].Contains("")) {
+            if (data[0][0].Equals("")) {
                 client.cedula = data[0][0];
                 client.nombreCompleto  = data[0][1];
 
@@ -169,7 +169,7 @@ public class ManageClients {
         Client client = new Client();
 
         if (data.Count != 0) {
-            if (data[0][0].Contains("")) {
+            if (data[0][0].Equals("")) {
                 client.cedula = data[0][0];
                 client.nombreCompleto = data[0][1];
 
