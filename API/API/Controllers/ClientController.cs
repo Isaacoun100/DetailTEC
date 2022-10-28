@@ -24,11 +24,11 @@ public class ClientController: ControllerBase
         StatusJSON json;
         if (!savedClient)
         {
-            json = new StatusJSON("Error", null);
+            json = new StatusJSON("error", null);
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", newClient);
+        json = new StatusJSON("ok", newClient);
         return Ok(json);
 
     }
@@ -43,11 +43,11 @@ public class ClientController: ControllerBase
         if (allClientsDB.Count == 0)
         {
 
-            json = new StatusJSON("Error",null);
+            json = new StatusJSON("error",null);
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", allClientsDB);
+        json = new StatusJSON("ok", allClientsDB);
          return Ok(json);
 
     }
@@ -60,11 +60,11 @@ public class ClientController: ControllerBase
         StatusJSON result;
         if (client.cedula.Equals(""))
         {
-            result = new StatusJSON("Error", null);
+            result = new StatusJSON("error", null);
             return BadRequest(result);
         }
 
-        result = new StatusJSON("Ok", client);
+        result = new StatusJSON("ok", client);
         return Ok(result);
     }
 
@@ -77,11 +77,11 @@ public class ClientController: ControllerBase
         Console.WriteLine(clientDeletion);
         if (clientDeletion == false)
         {
-            json = new StatusJSON("Error", null);
+            json = new StatusJSON("error", null);
             return BadRequest(json);
 
         }else {
-            json = new StatusJSON("Ok", "Deleted Succesfully");
+            json = new StatusJSON("ok", "Deleted Succesfully");
             return Ok(json);
         }
 
@@ -90,16 +90,19 @@ public class ClientController: ControllerBase
     [HttpPut("updateClient")]
     public async Task<ActionResult<Client>> updateClient(Client clientToUpdate)
     {
+        
+        Console.WriteLine("JSLC");
+        
         ManageClients manageClients = new ManageClients();
         var updatedClient = manageClients.updateClient(clientToUpdate);
         StatusJSON json;
         if (!updatedClient)
         {
-            json = new StatusJSON("Error",null);
+            json = new StatusJSON("error",null);
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", "Client Updated");
+        json = new StatusJSON("ok", "Client Updated");
         return Ok(json);
 
     }
