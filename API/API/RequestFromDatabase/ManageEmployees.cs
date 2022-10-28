@@ -108,8 +108,10 @@ public class ManageEmployees {
 
         if (getEmployee(cedula).cedula!=0) {
 
-            dataBaseManager.ExecuteQuery(String.Format( "DELETE FROM Trabajador" +
-                                         " WHERE cedula = {0};",cedula));
+            dataBaseManager.ExecuteQuery(String.Format( "DELETE FROM Trabajador_por_Sucursal " +
+                                                        "WHERE cedula_trabajador = {0} "+
+                                                        "DELETE FROM Trabajador" +
+                                                        " WHERE cedula = {0};",cedula));
             return true;
         }
 
@@ -164,7 +166,7 @@ public class ManageEmployees {
                                                        "SET rol = '{0}' " +
                                                        "WHERE cedula = {1};", 
                                                         newEmployee.rol, newEmployee.cedula));
-        if (!newEmployee.isGerente.Equals(null))
+        if (!newEmployee.isGerente.Equals(0))
             dataBaseManager.ExecuteQuery(String.Format("UPDATE Trabajador " +
                                                        "SET isGerente = '{0}' " +
                                                        "WHERE cedula = {1};", 

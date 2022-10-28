@@ -80,7 +80,8 @@ public class ClientController: ControllerBase
             json = new StatusJSON("error", null);
             return BadRequest(json);
 
-        }else {
+        }
+        else {
             json = new StatusJSON("ok", "Deleted Succesfully");
             return Ok(json);
         }
@@ -91,8 +92,7 @@ public class ClientController: ControllerBase
     public async Task<ActionResult<Client>> updateClient(Client clientToUpdate)
     {
         
-        Console.WriteLine("JSLC");
-        
+
         ManageClients manageClients = new ManageClients();
         var updatedClient = manageClients.updateClient(clientToUpdate);
         StatusJSON json;
