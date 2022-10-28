@@ -29,7 +29,7 @@ public class ManageProviders {
 
                 // Uncomment when the Provider class has productList 
                 for (int i = 0; i < productos_por_proveedor.Count; i++) {
-                    provider.productList.Add(productos_por_proveedor[i][1]);
+                    provider.productList.Add(productos_por_proveedor[i][0]);
                 }
                 
             }
