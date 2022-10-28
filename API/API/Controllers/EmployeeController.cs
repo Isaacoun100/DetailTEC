@@ -19,11 +19,11 @@ public class EmployeeController: ControllerBase
         StatusJSON json;
         if (employee.cedula == 0)
         {
-            json = new StatusJSON("Error", null);
+            json = new StatusJSON("error", null);
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", employee);
+        json = new StatusJSON("ok", employee);
         return Ok(json);
     }
 
@@ -40,7 +40,7 @@ public class EmployeeController: ControllerBase
 
         }
 
-        json = new StatusJSON("OK", allEmployees);
+        json = new StatusJSON("ok", allEmployees);
         return Ok(json);
 
     }
@@ -58,7 +58,7 @@ public class EmployeeController: ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", employee);
+        json = new StatusJSON("ok", employee);
         return Ok(json);
     }
     
@@ -76,7 +76,7 @@ public class EmployeeController: ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", request);
+        json = new StatusJSON("ok", request);
         return Ok(json);
     }
 
@@ -88,11 +88,11 @@ public class EmployeeController: ControllerBase
         StatusJSON json;
         if (!deletedEmployee)
         {
-            json = new StatusJSON("Error", null);
+            json = new StatusJSON("error", null);
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", employeeToDelete);
+        json = new StatusJSON("ok", employeeToDelete);
         return Ok(json);
 
     }

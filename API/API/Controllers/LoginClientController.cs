@@ -20,13 +20,13 @@ public class LoginClientController: ControllerBase
         StatusJSON json;
         if (requestedClient.cedula.Equals(""))
         {
-            json = new StatusJSON("Error", null);
+            json = new StatusJSON("error", null);
             return BadRequest(json);
         }
 
         ID clientID = new ID();
         clientID.cedula =Int32.Parse(requestedClient.cedula);
-        json = new StatusJSON("Ok", clientID);
+        json = new StatusJSON("ok", clientID);
         return Ok(json);
     }
 
