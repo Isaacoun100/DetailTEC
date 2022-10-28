@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DetailTEC.Views.Change_Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Change your information here:"
+                   Grid.Row="0"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="userEntry" Keyboard="Default" Grid.Row="1" Placeholder="New username"/>
+            <Button x:Name="userbtn" Text="Change username!" Clicked="Go_User" Grid.Row="2"/>
+            <Entry x:Name="addressEntry" Keyboard="Default" Grid.Row="3" Placeholder="New address"/>
+            <Button x:Name="addressbtn" Text="Change address!" Clicked="Go_Address" Grid.Row="4"/>
+            <Entry x:Name="passEntry"  IsPassword="true" Keyboard="Default" Grid.Row="5" Placeholder="new Password"/>
+            <Button x:Name="passbtn" Text="Change password!" Clicked="Go_Password" Grid.Row="6"/>
+            <Entry x:Name="nameEntry" Keyboard="Default" Grid.Row="7" Placeholder="New name"/>
+            <Button x:Name="namebtn" Text="Change name!" Clicked="Go_Name" Grid.Row="8"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

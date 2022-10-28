@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using DetailTEC.SQLite_Models;
+using DetailTEC.Data;
+using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -60,20 +62,64 @@ namespace DetailTEC.Views
         }
         private async void Make_Appointment(object sender, EventArgs e)
         {
-            string cedula = clientEntry.Text;
-            //int license = int.Parse(licenseEntry.Text);
-            string license = licenseEntry.Text;
-            string branch = branch_g;
-            string service = service_g;
-
-            /*
-             * 
-             * API connection
-             * 
-             */
-            await DisplayAlert("Appointment created, awating confirmation", "Appointment Done!", "OK");
-
-            await Navigation.PushAsync(new MainPage());
+            if (checkData())
+            {
+                
+                Appointment appoint = new Appointment
+                {
+                    cliente = clientEntry.Text,
+                    placaVehiculo = licenseEntry.Text,
+                    sucursal = branch_g,
+                    tipoLavado = service_g,
+                    responsable = "",
+                    factura = "",
+                    numeroCita = "",
+                };
+                await App.SQLiteDB.SaveAppointmentAsync(appoint);
+                clientEntry.Text = "";
+                licenseEntry.Text = "";
+                branch_g = "";
+                service_g = "";
+                
+                await DisplayAlert("Appointment created!", "Waiting for confirmation", "OK");
+                var appointmentList = await App.SQLiteDB.GetAppointmentsAsync();
+                
+                if (appointmentList!=null)
+                {
+                    listCitas.ItemsSource = appointmentList;
+                    
+                }
+                //await Navigation.PushAsync(new MainPage());
+            }
+            else
+            {
+                await DisplayAlert("Warning!", "Please complete all blank spaces", "OK");
+            }
+        }
+        public bool checkData()
+        {
+            bool response;
+            if (string.IsNullOrEmpty(clientEntry.Text))
+            {
+                response = false;
+            }
+            else if (string.IsNullOrEmpty(licenseEntry.Text))
+            {
+                response = false;
+            }
+            else if (string.IsNullOrEmpty(branch_g))
+            {
+                response = false;
+            }
+            else if (string.IsNullOrEmpty(branch_g))
+            {
+                response = false;
+            }
+            else
+            {
+                response = true;
+            }
+            return response;
         }
     }
 }

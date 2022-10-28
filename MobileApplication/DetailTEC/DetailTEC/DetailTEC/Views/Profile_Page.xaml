@@ -4,9 +4,57 @@
              x:Class="DetailTEC.Views.Profile_Page">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Complete name:"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="0"/>
+            <Label 
+                x:Name="Name_Label"
+                Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="1"/>
+            <Label Text="ID:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="2"/>
+            <Label 
+                x:Name="ID_Label"
+                Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="3"/>
+            <Label Text="Email:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="4"/>
+            <Label 
+                x:Name="Email_Label"
+                Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="5"/>
+            <Label Text="Address:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="6"/>
+            <Label 
+                x:Name="Address_Label"
+                Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="7"/>
+            <Label Text="Username:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="8"/>
+            <Label 
+                x:Name="Username_Label"
+                Text=""
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Grid.Row="9"/>
+            <Button Text="Change profile information" Grid.Row="10" Clicked="Change_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

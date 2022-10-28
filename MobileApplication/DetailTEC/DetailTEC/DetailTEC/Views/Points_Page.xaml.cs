@@ -15,7 +15,7 @@ namespace DetailTEC.Views
         public Points_Page()
         {
             InitializeComponent();
-            updatePoints();
+            //updatePoints();
         }
 
         public void updatePoints()

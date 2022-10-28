@@ -24,7 +24,7 @@ namespace DetailTEC.Views
 
     {
         public static DetailTEC.REST_API_UserModel.User CURRENTUSER;
-        public static string ip = "192.168.0.100";
+        public static string ip = "https://fd7a-152-231-186-244.ngrok.io";
         /// <summary>
         /// This constructor execute Login Page partial class
         /// @author Jose A.
@@ -32,6 +32,7 @@ namespace DetailTEC.Views
         public Login_Page()
         {
             InitializeComponent();
+            
         }
 
 
@@ -56,11 +57,25 @@ namespace DetailTEC.Views
             {
 
                 string email = userEntry.Text;
-                string password = CreateMD5(pasEntry.Text);
+                string password = pasEntry.Text;
                 HttpClient cliente = new HttpClient();
-                string url = "http://" + ip + ":7038/api/auth";
+                string url = ip + "/api/UserControllerTest";
                 var result = await cliente.GetAsync(url);
+                Console.WriteLine(result);
                 var json = result.Content.ReadAsStringAsync().Result;
+                Console.WriteLine(json);
+
+                /*
+                CURRENTUSER.ID = "14455341";
+                CURRENTUSER.Address = "San Jose";
+                CURRENTUSER.Email = "abc@gmail.com";
+                CURRENTUSER.Name = "Julio Tulio";
+                CURRENTUSER.Password = "password123";
+                CURRENTUSER.Points = "567";
+                CURRENTUSER.Telefonos = null;
+                CURRENTUSER.Username = "Xx_JulioGamer_xX";*/
+
+                /*
                 DetailTEC.REST_API_UserModel.User InputUser = new REST_API_UserModel.User();
                 InputUser = DetailTEC.REST_API_UserModel.User.FromJson(json);
                 if (InputUser.Name == null)
@@ -72,7 +87,8 @@ namespace DetailTEC.Views
                     CURRENTUSER = DetailTEC.REST_API_UserModel.User.FromJson(json);
                     await DisplayAlert("DetailTEC", "Welcome back " + CURRENTUSER.Name, "OK");
                     await Navigation.PushAsync(new Home_Page());
-                }
+                }*/
+                await Navigation.PushAsync(new Home_Page());
             }
 
         }

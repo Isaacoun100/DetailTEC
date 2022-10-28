@@ -14,31 +14,49 @@
         <!--#region MainLayout-->
         <StackLayout>
             <!--#region Data of new user-->
-            <Grid VerticalOptions="CenterAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-
-                </Grid.RowDefinitions>
+            
                 <Label x:Name="text1" Text="To make an appointment, please fill with your info:" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
                 <Entry x:Name="clientEntry" Keyboard="Numeric" Grid.Row="1" Placeholder="Client ID" />
                 <Entry x:Name="licenseEntry" Keyboard ="Default"   Grid.Row="2" Placeholder="License plate number"/>
                 <Label Text="Please select a branch:" Grid.Row="3"></Label>
                 <Picker x:Name="pickersucursal" SelectedIndexChanged="PickerSucursal_SelectedIndexChanged" Grid.Row="4"></Picker>
-                <BoxView x:Name="selectedbranch" VerticalOptions="CenterAndExpand" Grid.Row="5"></BoxView>
+                
                 <Label Text="Please select a branch:" Grid.Row="6"></Label>
                 <Picker x:Name="pickerservice" SelectedIndexChanged="PickerService_SelectedIndexChanged" Grid.Row="7"></Picker>
-                <BoxView x:Name="selectedservice" VerticalOptions="CenterAndExpand" Grid.Row="8"></BoxView>
+                
 
 
                 <Button Text="Make appointment!" Grid.Row="9" Clicked="Make_Appointment"/>
 
-            </Grid>
+                <ListView x:Name="listCitas">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding cliente}" Grid.Row="0" Grid.Column="0" TextColor="Blue"/>
+                                    <Label Text="{Binding placaVehiculo}" Grid.Row="0" Grid.Column="1" TextColor="Gray"/>
+                                    <Label Text="{Binding sucursal}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" TextColor="Orange"/>
+                                    <Label Text="{Binding tipoLavado}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" TextColor="Green"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+
+            
             <!--#endregion -->
         </StackLayout>
         <!--#endregion -->
