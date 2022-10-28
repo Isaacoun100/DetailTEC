@@ -5,7 +5,6 @@ import {LoginService} from '../../service/login/login.service'
 import {Router} from '@angular/router'
 import {LoginI} from '../../models/login/login.interface'
 import {ResponseI} from '../../models/response.interface'
-import { computeMsgId } from '@angular/compiler';
 
 @Component({
   selector: 'app-login-client',
@@ -32,12 +31,12 @@ export class LoginClientComponent implements OnInit {
       let dataResponse: ResponseI = data;
       if(dataResponse.status == "ok"){
         localStorage.setItem("token", data.result.cedula);
-        this.router.navigate(['dashboard']);//redireccionara al home del cliente
+        localStorage.setItem("user", "client");
+        this.router.navigate(['homeClient']);
       }else{
         this.errorStatus= true;
         this.errorMsj = "Credenciales invalidas";
       }
     })
   }
-
 }

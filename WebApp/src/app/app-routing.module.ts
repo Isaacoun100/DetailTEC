@@ -33,11 +33,12 @@ import { AppointmentsComponent } from './components/appointments/appointments.co
 import { ViewAppointmentComponent } from './components/view-appointment/view-appointment.component';
 import { EditAppointmentComponent } from './components/edit-appointment/edit-appointment.component';
 import { NewAppointmentComponent } from './components/new-appointment/new-appointment.component';
+import { HomeClientComponent } from './components/home-client/home-client.component';
+
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'loginAdmin',component:LoginAdminComponent},
-  {path:'loginClient',component:LoginClientComponent},
   {path:'homeAdmin',component:HomeAdminComponent},
   {path:'workers',component:WorkersComponent},
   {path:'viewWorker/:id',component:ViewWorkerComponent},
@@ -67,6 +68,10 @@ const routes: Routes = [
   {path:'viewAppointment/:id',component:ViewAppointmentComponent},
   {path:'editAppointment/:id',component:EditAppointmentComponent},
   {path:'newAppointment',component:NewAppointmentComponent},
+
+  {path:'loginClient',component:LoginClientComponent},
+  {path:'homeClient',component:HomeClientComponent},
+  
   {path:'test-info', component:ConnectionTestComponent},//TEST
 ];
 
@@ -82,4 +87,5 @@ export const routingComponents = [ConnectionTestComponent,HomeComponent,LoginAdm
   EditProviderComponent,NewProviderComponent,TypesWashingComponent,ViewTypesWashingComponent,
   EditTypesWashingComponent,NewTypesWashingComponent,ProductsSuppliesComponent,ViewProductComponent,
   EditProductComponent,NewProductComponent,AppointmentsComponent,ViewAppointmentComponent,
-  EditAppointmentComponent,NewAppointmentComponent]
+  EditAppointmentComponent,NewAppointmentComponent,
+  HomeClientComponent]

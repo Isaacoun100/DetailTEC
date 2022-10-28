@@ -19,4 +19,11 @@ export class LoginService {
     let direccion = this.url + "auth"
     return this.http.post<ResponseI>(direccion,form)
   }
+
+  //TEST
+  getTest():Observable<ResponseI>{
+    let direccion = this.url + "UserControllerTest";
+    return this.http.get<ResponseI>(direccion);
+  }
+
 }

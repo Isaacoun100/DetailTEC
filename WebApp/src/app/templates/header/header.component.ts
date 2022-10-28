@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  userSection:string
+
   constructor() { }
 
   ngOnInit(): void {
+
+    let user = this.getUser();
+    if(user == "client"){
+      this.userSection = "client"
+    }else{
+      this.userSection = "admin"
+    }
+  }
+
+  getUser(){
+    return localStorage.getItem('user');
   }
 
 }
