@@ -106,6 +106,7 @@ public class ClientController: ControllerBase
     }
     
 
+    
 
     [HttpPost("getClientPoints")]
     public async Task<ActionResult<StatusJSON>> getClientPoints(ID clientID)
@@ -123,6 +124,34 @@ public class ClientController: ControllerBase
         json = new StatusJSON("ok", pointsManager);
         return Ok(json);
     }
+    
+    
+    [HttpPost("addClientMobile")]
+    public async Task<ActionResult<StatusJSON>> addClientMobile(Client newClient)
+    {
+        string name = newClient.nombreCompleto;
+        ManageClients manageClients = new ManageClients();
+        var savedClient = manageClients.addClient(newClient);
+        Console.WriteLine("Add client: " + savedClient);
+        if (!savedClient)
+        {
+            Client badClient = new Client();
+            badClient.cedula = "";
+            badClient.contrasena = "";
+            badClient.correo = "";
+            badClient.puntos = 0;
+            badClient.direccion = "";
+            badClient.usuario = "";
+            badClient.nombreCompleto = "";
+            badClient.telefonos = new List<int>();
+            return BadRequest(badClient);
+        }
+
+        
+        return Ok(newClient);
+
+    }
+    
 
 
 
