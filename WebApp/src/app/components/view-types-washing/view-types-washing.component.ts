@@ -48,7 +48,7 @@ export class ViewTypesWashingComponent implements OnInit {
   }
 
   delete(){
-    this.api.deleteTypeWashing(this.typeWashingRequest)
+    this.api.deleteTypeWashing(this.typeWashingRequest).subscribe();
     this.exit()
   }
 

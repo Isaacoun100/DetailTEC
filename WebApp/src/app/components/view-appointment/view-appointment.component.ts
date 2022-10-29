@@ -48,7 +48,7 @@ export class ViewAppointmentComponent implements OnInit {
   }
 
   delete(){
-    this.api.deleteAppointment(this.appointmentRequest)
+    this.api.deleteAppointment(this.appointmentRequest).subscribe();
     this.exit()
   }
 

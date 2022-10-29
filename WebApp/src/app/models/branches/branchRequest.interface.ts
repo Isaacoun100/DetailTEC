@@ -1,3 +1,3 @@
 export interface BranchRequestI{
-    nombre:any
+    branchName:any
 }

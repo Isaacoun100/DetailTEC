@@ -19,19 +19,22 @@ export class ViewBranchComponent implements OnInit {
   branchInfo:SingleBranchI = {
     "nombre":"",
     "fechaInicioGerente":"",
-    "ubicacion":"",
+    "ubicacion":[],
     "gerente":"",
-    "telefono":0
+    "telefono":""
   }
   branchRequest:BranchRequestI;
 
   ngOnInit(): void {
 
     let branchId = this.activerouter.snapshot.paramMap.get('id');
-    this.branchRequest = {"nombre":branchId}
+    this.branchRequest = {"branchName":branchId}
+
+    console.log(this.branchRequest);
     
     this.api.getSingleBranch(this.branchRequest).subscribe(data =>{
       this.branchInfoResponse = data;
+
       if(this.branchInfoResponse.status == "ok"){
         this.branchInfo = this.branchInfoResponse.result;
       }else{
@@ -45,7 +48,7 @@ export class ViewBranchComponent implements OnInit {
   }
 
   delete(){
-    this.api.deleteBranch(this.branchRequest)
+    this.api.deleteBranch(this.branchRequest).subscribe();
     this.exit()
   }
 

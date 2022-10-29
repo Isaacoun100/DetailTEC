@@ -21,6 +21,7 @@ export class ProvidersComponent implements OnInit {
     
       this.api.getProviders().subscribe(data =>{
         this.providersResponse = data;
+        console.log(data);
         if(this.providersResponse.status=="ok"){
           this.providers = this.providersResponse.result;
         }else{

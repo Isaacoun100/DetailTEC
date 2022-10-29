@@ -48,7 +48,7 @@ export class ViewClientComponent implements OnInit {
   }
 
   delete(){
-    this.api.deleteClient(this.clientRequest)
+    this.api.deleteClient(this.clientRequest).subscribe();
     this.exit()
   }
 

@@ -31,7 +31,7 @@ export class EditBranchComponent implements OnInit {
   ngOnInit(): void {
 
     let branchId = this.activerouter.snapshot.paramMap.get('id');
-    this.branchRequest = {'nombre':branchId}
+    this.branchRequest = {'branchName':branchId}
 
     this.api.getSingleBranch(this.branchRequest).subscribe(data =>{
       this.branchInfoResponse = data;

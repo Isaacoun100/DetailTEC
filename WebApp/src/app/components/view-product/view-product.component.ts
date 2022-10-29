@@ -28,9 +28,9 @@ export class ViewProductComponent implements OnInit {
 
     let productId = this.activerouter.snapshot.paramMap.get('id');
     this.productRequest = {"nombre":productId}
-    
     this.api.getSingleProduct(this.productRequest).subscribe(data =>{
       this.productInfoResponse = data;
+      console.log(data);
       if(this.productInfoResponse.status == "ok"){
         this.productInfo = this.productInfoResponse.result;
       }else{
@@ -44,7 +44,7 @@ export class ViewProductComponent implements OnInit {
   }
 
   delete(){
-    this.api.deleteProduct(this.productRequest)
+    this.api.deleteProduct(this.productRequest).subscribe();
     this.exit()
   }
 

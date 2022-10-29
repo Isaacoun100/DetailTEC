@@ -51,7 +51,7 @@ export class ViewWorkerComponent implements OnInit {
   }
 
   delete(){
-    this.api.deleteEmployee(this.workerRequest)
+    this.api.deleteEmployee(this.workerRequest).subscribe();
     this.exit()
   }
 

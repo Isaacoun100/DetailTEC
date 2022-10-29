@@ -1,7 +1,7 @@
 export interface SingleBranchI {
     nombre:string,
     fechaInicioGerente:string,
-    ubicacion:string,
+    ubicacion:[],
     gerente:string,
-    telefono:number
+    telefono:string
 }

@@ -46,7 +46,7 @@ export class ViewProviderComponent implements OnInit {
   }
 
   delete(){
-    this.api.deleteProvider(this.providerRequest)
+    this.api.deleteProvider(this.providerRequest).subscribe();
     this.exit()
   }
 
