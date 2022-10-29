@@ -26,7 +26,7 @@
         public string Name { get; set; }
 
         [JsonProperty("telefonos")]
-        public JArray Telefonos { get; set; }
+        public List<int> Telefonos { get; set; }
 
         [JsonProperty("cedula")]
         public string ID { get; set; }

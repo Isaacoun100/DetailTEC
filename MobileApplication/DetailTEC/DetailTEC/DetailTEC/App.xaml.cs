@@ -23,7 +23,7 @@ namespace DetailTEC
             {
                 if (db == null)
                 {
-                    db = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DetailTECDB.db3"));
+                    db = new SQLiteHelper(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DetailTECDB1.db3"));
                 }
                 return db;
             }

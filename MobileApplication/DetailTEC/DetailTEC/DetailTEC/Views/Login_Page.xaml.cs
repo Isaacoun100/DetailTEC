@@ -24,7 +24,7 @@ namespace DetailTEC.Views
 
     {
         public static DetailTEC.REST_API_UserModel.User CURRENTUSER;
-        public static string ip = "https://fd7a-152-231-186-244.ngrok.io";
+        public static string ip = "https://5314-201-207-239-92.ngrok.io";
         /// <summary>
         /// This constructor execute Login Page partial class
         /// @author Jose A.
@@ -55,30 +55,28 @@ namespace DetailTEC.Views
             var userValidate = userEntry.Text;
             if (!string.IsNullOrEmpty(userValidate))
             {
-
                 string email = userEntry.Text;
                 string password = pasEntry.Text;
+
                 HttpClient cliente = new HttpClient();
-                string url = ip + "/api/UserControllerTest";
-                var result = await cliente.GetAsync(url);
-                Console.WriteLine(result);
+
+                string url = ip + "/api/authMobile";
+
+                LoginUser log = new LoginUser();
+
+                log.Email = email;
+                log.Password = password;
+
+                String jsonLogIn = JsonConvert.SerializeObject(log);
+                var datasent = new StringContent(jsonLogIn);
+                datasent.Headers.ContentType.MediaType = "application/json";
+                var result = await cliente.PostAsync(url, datasent);
+
                 var json = result.Content.ReadAsStringAsync().Result;
-                Console.WriteLine(json);
-
-                /*
-                CURRENTUSER.ID = "14455341";
-                CURRENTUSER.Address = "San Jose";
-                CURRENTUSER.Email = "abc@gmail.com";
-                CURRENTUSER.Name = "Julio Tulio";
-                CURRENTUSER.Password = "password123";
-                CURRENTUSER.Points = "567";
-                CURRENTUSER.Telefonos = null;
-                CURRENTUSER.Username = "Xx_JulioGamer_xX";*/
-
-                /*
-                DetailTEC.REST_API_UserModel.User InputUser = new REST_API_UserModel.User();
+                DetailTEC.REST_API_UserModel.User InputUser = new DetailTEC.REST_API_UserModel.User();
                 InputUser = DetailTEC.REST_API_UserModel.User.FromJson(json);
-                if (InputUser.Name == null)
+
+                if (InputUser.ID == null)
                 {
                     await DisplayAlert("DetailTEC", "The data you filled with does not match with any DetailTEC user. Please verify your info and try again!", "OK");
                 }
@@ -87,8 +85,8 @@ namespace DetailTEC.Views
                     CURRENTUSER = DetailTEC.REST_API_UserModel.User.FromJson(json);
                     await DisplayAlert("DetailTEC", "Welcome back " + CURRENTUSER.Name, "OK");
                     await Navigation.PushAsync(new Home_Page());
-                }*/
-                await Navigation.PushAsync(new Home_Page());
+                }
+
             }
 
         }
