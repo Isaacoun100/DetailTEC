@@ -4,6 +4,9 @@ using Microsoft.Data.SqlClient;
 
 public class DataBaseManager {
     
+    /**
+     * Reads the data received from the query
+     */
     public List<List<String>> ReadOrderData(string queryString) {
         
         string connectionString = @"Server=LAPTOP\SQL_DETAILTEC;
@@ -37,6 +40,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Excecutes a query, no response
+     */
     public bool ExecuteQuery(string queryString) {
         
         string connectionString = @"Server=DESKTOP-E6SO50B\SQL_DETAILTEC;
