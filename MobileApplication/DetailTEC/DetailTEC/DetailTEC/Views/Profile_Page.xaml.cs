@@ -15,14 +15,17 @@ namespace DetailTEC.Views
         public Profile_Page()
         {
             InitializeComponent();
-            updateLabels();
-    
+            
         }
         private async void Change_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Change_Page());
         }
-        
+        private async void Update_Clicked(object sender, EventArgs e)
+        {
+            updateLabels();
+        }
+
         public void updateLabels()
         {
             Name_Label.Text = Login_Page.CURRENTUSER.Name;

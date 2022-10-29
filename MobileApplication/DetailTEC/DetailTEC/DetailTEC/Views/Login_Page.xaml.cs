@@ -51,7 +51,7 @@ namespace DetailTEC.Views
         /// </summary>
         private async void Button_Clicked(object sender, EventArgs e)
         {
-
+            
             var userValidate = userEntry.Text;
             if (!string.IsNullOrEmpty(userValidate))
             {
@@ -87,8 +87,8 @@ namespace DetailTEC.Views
                     await Navigation.PushAsync(new Home_Page());
                 }
 
-            }
 
+            }
         }
         /// <summary>
         /// This method is used to change the current page to Info page

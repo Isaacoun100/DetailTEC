@@ -55,6 +55,7 @@
                 HorizontalOptions="CenterAndExpand" 
                 Grid.Row="9"/>
             <Button Text="Change profile information" Grid.Row="10" Clicked="Change_Clicked"/>
+            <Button Text="Update Information" Grid.Row="11" Clicked="Update_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
