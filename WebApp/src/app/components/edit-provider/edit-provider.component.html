@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+<div class="container">
+  <form [formGroup]="editForm" (ngSubmit)="putForm(editForm.value)">
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          formControlName="nombre"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Direccion</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Direccion"
+          formControlName="direccion"
+        />
+      </div>
+    </div>
+    <br /><br />
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Correo</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Correo"
+          formControlName="correo"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Contacto</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Contacto"
+          formControlName="contacto"
+        />
+      </div>
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+  </form>
+</div>

@@ -1,0 +1,42 @@
+<div *ngIf="userSection == 'admin'; else elseBlock">
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/homeAdmin" style="align: center">
+        <img
+          src="assets/images/lavacar.jpg"
+          alt=""
+          width="60"
+          height="60"
+          class="d-inline-block align-text-top"
+        />
+        DetailTEC
+      </a>
+      <div>
+        <a routerLink="/appointments" class="btn button">CITAS</a>
+        <a routerLink="/appointments" class="btn button">FACTURACION</a>
+      </div>
+    </div>
+  </nav>
+  <br />
+</div>
+<ng-template #elseBlock
+  ><nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/homeClient" style="align: center">
+        <img
+          src="assets/images/lavacar.jpg"
+          alt=""
+          width="60"
+          height="60"
+          class="d-inline-block align-text-top"
+        />
+        DetailTEC
+      </a>
+      <div>
+        <div>Puntos: {{ points.puntos }}</div>
+        <a routerLink="/appointments" class="btn button">CITAS</a>
+      </div>
+    </div>
+  </nav>
+  <br
+/></ng-template>

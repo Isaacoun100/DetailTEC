@@ -1,0 +1,99 @@
+<app-header></app-header>
+
+<div class="container">
+  <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Nombre Completo</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre Completo"
+          formControlName="nombreCompleto"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Telefono 1</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Telefono 1"
+          formControlName="telefono1"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Telefono 2</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Telefono 2"
+          formControlName="telefono2"
+        />
+      </div>
+    </div>
+    <br /><br />
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Cedula</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Cedula"
+          formControlName="cedula"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Correo</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Correo"
+          formControlName="correo"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Direccion</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Direccion"
+          formControlName="direccion"
+        />
+      </div>
+    </div>
+    <br /><br />
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Usuario</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Usuario"
+          formControlName="usuario"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Contraseña</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Contraseña"
+          formControlName="contrasena"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Puntos</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Puntos"
+          formControlName="puntos"
+        />
+      </div>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+  </form>
+</div>

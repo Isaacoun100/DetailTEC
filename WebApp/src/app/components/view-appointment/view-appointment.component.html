@@ -1,0 +1,69 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Cliente</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        appointmentInfo.cliente
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Placa Vehiculo</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        appointmentInfo.placaVehiculo
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Sucursal</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        appointmentInfo.sucursal
+      }}</label>
+    </div>
+  </div>
+  <br /><br />
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Tipo Lavado</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        appointmentInfo.tipoLavado
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Responsable</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        appointmentInfo.responsable
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Factura</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        appointmentInfo.factura
+      }}</label>
+    </div>
+  </div>
+  <br /><br />
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Numero Cita</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        appointmentInfo.numeroCita
+      }}</label>
+    </div>
+  </div>
+  <br />
+  <button type="button" class="btn btn-secondary" (click)="edit()">
+    Editar
+  </button>
+  <button type="button" class="btn btn-danger" (click)="delete()">
+    Eliminar
+  </button>
+  <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+</div>

@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Nombre</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ productInfo.nombre }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Marca</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ productInfo.marca }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Costo</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ productInfo.costo }}</label>
+    </div>
+  </div>
+  <br /><br />
+  <br /><br />
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Proveedores:</label>
+      <br />
+
+      <tr *ngFor="let proveedor of productInfo.proveedores">
+        <td>{{ proveedor }}</td>
+      </tr>
+    </div>
+  </div>
+  <br />
+  <button type="button" class="btn btn-secondary" (click)="edit()">
+    Editar
+  </button>
+  <button type="button" class="btn btn-danger" (click)="delete()">
+    Eliminar
+  </button>
+  <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+</div>
