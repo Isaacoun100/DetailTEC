@@ -82,7 +82,21 @@ public class BranchController : ControllerBase
         return Ok(json);
     }
     
-    
+    [HttpGet("getAllBranches")]
+    public async Task<ActionResult<Branch>> getAllBranches()
+    {
+        ManageBranches manageBranches = new ManageBranches();
+        List<Branch> allBranches = manageBranches.getAllBranches();
+        StatusJSON json;
+        if (allBranches.Count == 0)
+        {
+            json = new StatusJSON("error", null);
+            return BadRequest(json);
+        }
+
+        json = new StatusJSON("ok", allBranches);
+        return Ok(json);
+    }
 }
 
 
