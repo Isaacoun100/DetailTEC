@@ -110,6 +110,43 @@ public class ManageClients {
         return false;
     }
     
+    
+    public bool addClientMobile(Client newClient) {
+
+        if (!getClient(newClient.cedula).cedula.Equals("0")) {
+
+            string queryString = string.Format(
+                "INSERT INTO Cliente (cedula, nombreCompleto, puntos, contrasena, correo, usuario, direccion)" +
+                " VALUES ('{0}','{1}',{2},'{3}','{4}','{5}','{6}')",
+                newClient.cedula, newClient.nombreCompleto, newClient.puntos.ToString(), newClient.contrasena,
+                newClient.correo, newClient.usuario, newClient.direccion);
+            
+            
+            for (int i = 0; i < newClient.telefonos.Count; i++) {
+                queryString += string.Format(
+                    "\nINSERT INTO Telefonos_por_Cliente (cliente, telefono)" +
+                    " VALUES ('{0}',{1})",
+                    newClient.cedula, newClient.telefonos[i]);
+            }
+            
+            Console.WriteLine(queryString);
+
+            try {
+                dataBaseManager.ExecuteQuery(queryString);
+                return true;
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return false;
+            }
+
+        }
+        
+        return false;
+    }
+    
+    
+    
     public bool deleteClient(string cedula) {
 
         if (!getClient(cedula).cedula.Equals("")) {
