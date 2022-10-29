@@ -46,4 +46,9 @@ export class ClientsService {
     let direccion = this.url + "addClient";
     return this.http.post(direccion,form)
   }
+
+  getPoints(id:ClientRequestI):Observable<ResponseI>{
+    let direccion = this.url + "getClientPoints";
+    return this.http.post<ResponseI>(direccion, id)
+  }
 }

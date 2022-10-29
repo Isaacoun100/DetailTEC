@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
 import {LoginService} from '../../service/login/login.service'
 import {Router} from '@angular/router'
-import {LoginI} from '../../models/login/login.interface'
+import {LoginClientI} from '../../models/login/loginClient.interface'
 import {ResponseI} from '../../models/response.interface'
 
 @Component({
@@ -14,7 +14,7 @@ import {ResponseI} from '../../models/response.interface'
 export class LoginClientComponent implements OnInit {
 
   loginForm = new FormGroup({
-    cedula: new FormControl('', Validators.required),
+    correo: new FormControl('', Validators.required),
     contrasena: new FormControl('', Validators.required)
   })
 
@@ -26,8 +26,8 @@ export class LoginClientComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLogin(form:LoginI){
-    this.api.loginByEmail(form).subscribe(data => {
+  onLogin(form:LoginClientI){
+    this.api.loginClient(form).subscribe(data => {
       let dataResponse: ResponseI = data;
       if(dataResponse.status == "ok"){
         localStorage.setItem("token", data.result.cedula);

@@ -22,7 +22,7 @@
 <ng-template #elseBlock
   ><nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/homeclient" style="align: center">
+      <a class="navbar-brand" routerLink="/homeClient" style="align: center">
         <img
           src="assets/images/lavacar.jpg"
           alt=""
@@ -33,6 +33,7 @@
         DetailTEC
       </a>
       <div>
+        <div>Puntos: {{ points.puntos }}</div>
         <a routerLink="/appointments" class="btn button">CITAS</a>
       </div>
     </div>
