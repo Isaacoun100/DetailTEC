@@ -105,12 +105,14 @@ public class ManageBranches {
                 ubicaciones.Add(data[i][5]);
                 ubicaciones.Add(data[i][6]);
                 branch.ubicacion = ubicaciones;
-                ubicaciones.Clear();
                 allBranches.Add(branch);
-
+                ubicaciones.Clear();
+                branch = new Branch();
             }
+            
+            
+            
         }
-
         return allBranches;
     }
     
