@@ -127,7 +127,7 @@ public class ClientController: ControllerBase
     
     
     [HttpPost("addClientMobile")]
-    public async Task<ActionResult<StatusJSON>> addClientMobile(Client newClient)
+    public async Task<ActionResult<Client>> addClientMobile(Client newClient)
     {
         string name = newClient.nombreCompleto;
         ManageClients manageClients = new ManageClients();
