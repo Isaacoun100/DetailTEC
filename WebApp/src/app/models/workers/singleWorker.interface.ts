@@ -5,7 +5,7 @@ export interface SingleWorkerI{
     fechaIngreso:string,
     fechaNacimiento:string,
     edad:number,
-    password:string,
+    contrasena:string,
     rol:string,
     tipoPago:string
 }

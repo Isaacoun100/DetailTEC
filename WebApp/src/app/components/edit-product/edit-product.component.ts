@@ -53,7 +53,7 @@ export class EditProductComponent implements OnInit {
   
   
     putForm(form:SingleProductSupplyI){
-      this.api.putProduct(form);
+      this.api.putProduct(form).subscribe();
       this.exit();
     }
   

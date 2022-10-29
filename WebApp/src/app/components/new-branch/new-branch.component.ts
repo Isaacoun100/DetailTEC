@@ -26,7 +26,7 @@ export class NewBranchComponent implements OnInit {
   }
 
   postForm(form:SingleBranchI){
-    this.api.poatBranch(form);
+    this.api.poatBranch(form).subscribe();
     this.newForm.reset();
   }
 

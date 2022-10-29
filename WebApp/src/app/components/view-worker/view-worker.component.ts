@@ -24,7 +24,7 @@ export class ViewWorkerComponent implements OnInit {
     "fechaIngreso":"",
     "fechaNacimiento":"",
     "edad":0,
-    "password":"",
+    "contrasena":"",
     "rol":"",
     "tipoPago":""
   }

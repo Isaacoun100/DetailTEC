@@ -21,7 +21,7 @@ export class NewWorkerComponent implements OnInit {
     fechaIngreso: new FormControl(''),
     fechaNacimiento: new FormControl(''),
     edad: new FormControl(''),
-    password: new FormControl(''),
+    contrasena: new FormControl(''),
     rol:new FormControl(''),
     tipoPago: new FormControl('')
 })
@@ -30,7 +30,7 @@ export class NewWorkerComponent implements OnInit {
   }
 
   postForm(form:SingleWorkerI){
-    this.api.postEmployee(form);
+    this.api.postEmployee(form).subscribe();
     this.newForm.reset();
   }
 

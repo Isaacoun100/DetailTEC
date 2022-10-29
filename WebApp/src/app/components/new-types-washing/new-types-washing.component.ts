@@ -33,7 +33,7 @@ export class NewTypesWashingComponent implements OnInit {
   
   
     postForm(form:SingleTypeWashingI){
-      this.api.postTypeWashing(form);
+      this.api.postTypeWashing(form).subscribe();
       this.newForm.reset()
     }
   

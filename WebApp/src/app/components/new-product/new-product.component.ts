@@ -29,7 +29,7 @@ export class NewProductComponent implements OnInit {
   
   
     postForm(form:SingleProductSupplyI){
-      this.api.postProduct(form);
+      this.api.postProduct(form).subscribe();
       this.newForm.reset()
     }
   

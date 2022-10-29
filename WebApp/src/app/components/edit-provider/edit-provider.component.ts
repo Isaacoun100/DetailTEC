@@ -53,7 +53,7 @@ export class EditProviderComponent implements OnInit {
   }
 
   putForm(form:SingleProviderI){
-    this.api.putProvider(form);
+    this.api.putProvider(form).subscribe();
     this.exit();
   }
 

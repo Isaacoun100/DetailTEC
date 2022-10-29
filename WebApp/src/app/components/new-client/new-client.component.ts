@@ -21,7 +21,7 @@ export class NewClientComponent implements OnInit {
       "correo":"",
       "direccion":"",
       "usuario":"",
-      "password":"",
+      "contrasena":"",
       "puntos":456
     }
 
@@ -33,7 +33,7 @@ export class NewClientComponent implements OnInit {
       correo: new FormControl(''),
       direccion: new FormControl(''),
       usuario: new FormControl(''),
-      password: new FormControl(''),
+      contrasena: new FormControl(''),
       puntos:new FormControl(''),
   }) 
 
@@ -48,9 +48,9 @@ export class NewClientComponent implements OnInit {
     this.realForm.correo = form.correo
     this.realForm.direccion = form.direccion
     this.realForm.usuario = form.usuario
-    this.realForm.password = form.password
+    this.realForm.contrasena = form.contrasena
     this.realForm.puntos = form.puntos
-    this.api.postClient(this.realForm);
+    this.api.postClient(this.realForm).subscribe();
     this.newForm.reset();
   }
 

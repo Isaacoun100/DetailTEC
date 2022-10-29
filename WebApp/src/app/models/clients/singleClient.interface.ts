@@ -5,6 +5,6 @@ export interface SingleClientI{
     correo:string,
     direccion:string,
     usuario:string,
-    password:string,
+    contrasena:string,
     puntos:number
 }

@@ -26,7 +26,7 @@ export class EditClientComponent implements OnInit {
     "correo":"",
     "direccion":"",
     "usuario":"",
-    "password":"",
+    "contrasena":"",
     "puntos":456
   }
   
@@ -39,7 +39,7 @@ export class EditClientComponent implements OnInit {
     correo: new FormControl(''),
     direccion: new FormControl(''),
     usuario: new FormControl(''),
-    password: new FormControl(''),
+    contrasena: new FormControl(''),
     puntos:new FormControl(''),
 }) 
 
@@ -60,7 +60,7 @@ export class EditClientComponent implements OnInit {
           'correo': this.clientInfo.correo,
           'direccion': this.clientInfo.direccion,
           'usuario':this.clientInfo.usuario,
-          'password': this.clientInfo.password,
+          'contrasena': this.clientInfo.contrasena,
           'puntos':this.clientInfo.puntos
         })
       }else{
@@ -77,10 +77,10 @@ export class EditClientComponent implements OnInit {
     this.realForm.correo = form.correo
     this.realForm.direccion = form.direccion
     this.realForm.usuario = form.usuario
-    this.realForm.password = form.password
+    this.realForm.contrasena = form.contrasena
     this.realForm.puntos = form.puntos
 
-    this.api.putClient(this.realForm);
+    this.api.putClient(this.realForm).subscribe();
     this.exit()
 
   }

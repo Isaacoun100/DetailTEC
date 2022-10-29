@@ -56,7 +56,7 @@ export class EditAppointmentComponent implements OnInit {
   }
 
   putForm(form:SingleAppointmentI){
-    this.api.putAppointment(form);
+    this.api.putAppointment(form).subscribe();
     this.exit();
   }
 

@@ -27,7 +27,7 @@ export class EditWorkerComponent implements OnInit {
     fechaIngreso: new FormControl(''),
     fechaNacimiento: new FormControl(''),
     edad: new FormControl(''),
-    password: new FormControl(''),
+    contrasena: new FormControl(''),
     rol:new FormControl(''),
     tipoPago: new FormControl('')
 }) 
@@ -49,7 +49,7 @@ export class EditWorkerComponent implements OnInit {
           'fechaIngreso': this.workerInfo.fechaIngreso,
           'fechaNacimiento': this.workerInfo.fechaNacimiento,
           'edad':this.workerInfo.edad,
-          'password': this.workerInfo.password,
+          'contrasena': this.workerInfo.contrasena,
           'rol':this.workerInfo.rol,
           'tipoPago': this.workerInfo.tipoPago,
         })
@@ -61,7 +61,7 @@ export class EditWorkerComponent implements OnInit {
   }
 
   putForm(form:SingleWorkerI){
-    this.api.putEmployee(form);
+    this.api.putEmployee(form).subscribe();
     this.exit();
   }
 

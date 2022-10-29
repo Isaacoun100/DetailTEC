@@ -33,7 +33,7 @@ export class NewProviderComponent implements OnInit {
   }
 
   postForm(form:SingleProviderI){
-    this.api.postProvider(form);
+    this.api.postProvider(form).subscribe();
     this.newForm.reset()
   }
 

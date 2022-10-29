@@ -32,7 +32,7 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   postForm(form:SingleAppointmentI){
-    this.api.postAppointment(form);
+    this.api.postAppointment(form).subscribe();
     this.newForm.reset()
   }
 

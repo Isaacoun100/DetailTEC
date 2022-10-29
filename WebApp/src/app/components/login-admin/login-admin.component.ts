@@ -14,7 +14,7 @@ import {ResponseI} from '../../models/response.interface'
 export class LoginAdminComponent implements OnInit {
 
   loginForm = new FormGroup({
-    correo: new FormControl('', Validators.required),
+    cedula: new FormControl('', Validators.required),
     contrasena: new FormControl('', Validators.required)
   })
 

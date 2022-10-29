@@ -61,7 +61,7 @@ export class EditTypesWashingComponent implements OnInit {
   
   
     putForm(form:SingleTypeWashingI){
-      this.api.putTypeWashing(form);
+      this.api.putTypeWashing(form).subscribe();
       this.exit();
     }
   

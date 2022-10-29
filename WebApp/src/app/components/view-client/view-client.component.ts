@@ -23,7 +23,7 @@ export class ViewClientComponent implements OnInit {
     "correo":"",
     "direccion":"",
     "usuario":"",
-    "password":"",
+    "contrasena":"",
     "puntos":0
 }
   clientRequest:ClientRequestI;

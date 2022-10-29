@@ -50,7 +50,7 @@ export class EditBranchComponent implements OnInit {
   }
 
   putForm(form:SingleBranchI){
-    this.api.putBranch(form);
+    this.api.putBranch(form).subscribe();
     this.exit();
   }
 

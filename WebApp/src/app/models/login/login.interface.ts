@@ -1,4 +1,4 @@
 export interface LoginI{
-    correo:string,
+    cedula:string,
     contrasena:string
 }
