@@ -15,7 +15,10 @@ namespace DetailTEC.Views
         public Points_Page()
         {
             InitializeComponent();
-            //updatePoints();
+        }
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            updatePoints();
         }
 
         public void updatePoints()

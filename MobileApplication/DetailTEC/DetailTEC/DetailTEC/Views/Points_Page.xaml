@@ -15,6 +15,7 @@
                 HorizontalOptions="CenterAndExpand" 
                 Grid.Row="2"
                 />
+            <Button Text="Update points" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
