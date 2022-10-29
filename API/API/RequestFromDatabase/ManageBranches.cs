@@ -53,7 +53,7 @@ public class ManageBranches {
         {
             string queryString = string.Format(
                 "INSERT INTO Sucursal (nombre, fechaInicioGerente, fechaApertura, gerente, telefono, provincia, canton, distrito)" +
-                "VALUES ('{0}' , convert(date,'{1}',103), conver(date, '{2}',103) , {3} , '{4}' , '{5}', '{6}' , '{7}')",
+                "VALUES ('{0}' , convert(date,'{1}',103), convert(date, '{2}',103) , {3} , '{4}' , '{5}', '{6}' , '{7}')",
                 newBranch.nombre, newBranch.fechaInicioGerente, newBranch.fechaApertura, newBranch.gerente,
                 newBranch.telefono,
                 newBranch.ubicacion[0], newBranch.ubicacion[1], newBranch.ubicacion[2]);
@@ -138,7 +138,7 @@ public class ManageBranches {
 
         if (!updateBranch.telefono.Equals(""))
         {
-            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal" +
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal " +
                                                        "SET telefono = '{0}' " +
                                                        "WHERE nombre = '{1}';",
                 updateBranch.telefono,updateBranch.nombre ));
@@ -146,8 +146,8 @@ public class ManageBranches {
 
         if (!updateBranch.fechaApertura.Equals(""))
         {
-            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal" +
-                                                       "SET  fechaApertura= '{0}' " +
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal " +
+                                                       "SET  fechaApertura= convert(date,'{0}',103) " +
                                                        "WHERE nombre = '{1}';",
                 updateBranch.fechaApertura, updateBranch.nombre));
             
@@ -155,8 +155,8 @@ public class ManageBranches {
 
         if (!updateBranch.fechaInicioGerente.Equals(""))
         {
-            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal" +
-                                                       "SET  fechaInicioGerente= '{0}' " +
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal " +
+                                                       "SET  fechaInicioGerente= convert(date,'{0}',103) " +
                                                        "WHERE nombre = '{1}';",
                 updateBranch.fechaInicioGerente, updateBranch.nombre));
             
@@ -164,7 +164,7 @@ public class ManageBranches {
 
         if (!updateBranch.gerente.Equals(0))
         {
-            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal" +
+            dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal " +
                                                        "SET  gerente= {0} " +
                                                        "WHERE nombre = '{1}';",
                 updateBranch.gerente, updateBranch.nombre));
@@ -175,24 +175,24 @@ public class ManageBranches {
         {
             if (!updateBranch.ubicacion[0].Equals(""))
             {
-                dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal" +
-                                                           "SET  provincia= {0} " +
+                dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal " +
+                                                           "SET  provincia= '{0}' " +
                                                            "WHERE nombre = '{1}';",
                     updateBranch.ubicacion[0], updateBranch.nombre));
             }
             
             if (!updateBranch.ubicacion[1].Equals(""))
             {
-                dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal" +
-                                                           "SET  canton= {0} " +
+                dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal " +
+                                                           "SET  canton= '{0}' " +
                                                            "WHERE nombre = '{1}';",
                     updateBranch.ubicacion[1], updateBranch.nombre));
             }
             
             if (!updateBranch.ubicacion[2].Equals(""))
             {
-                dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal" +
-                                                           "SET  distrito= {0} " +
+                dataBaseManager.ExecuteQuery(String.Format("UPDATE Sucursal " +
+                                                           "SET distrito= '{0}' " +
                                                            "WHERE nombre = '{1}';",
                     updateBranch.ubicacion[2], updateBranch.nombre));
             }
