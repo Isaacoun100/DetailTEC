@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {InformationTestI} from '../../interfaces/information-test.interface'
+import * as myGlobals from '../../../../src/globals'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiConnectionTestService {
 
-  url = 'http://localhost:7274/api/'
+  url = myGlobals.URL
   constructor(private http:HttpClient) { }
 
   getInformationTest():Observable<InformationTestI[]>{

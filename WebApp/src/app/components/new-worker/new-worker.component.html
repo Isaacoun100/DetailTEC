@@ -1,0 +1,99 @@
+<app-header></app-header>
+
+<div class="container">
+  <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          formControlName="nombre"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Apellidos</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Apellidos"
+          formControlName="apellidos"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Cedula</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Cedula"
+          formControlName="cedula"
+        />
+      </div>
+    </div>
+    <br /><br />
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Fecha Ingreso</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Fecha Ingreso"
+          formControlName="fechaIngreso"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Fecha Nacimiento</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Fecha Nacimiento"
+          formControlName="fechaNacimiento"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Edad</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Edad"
+          formControlName="edad"
+        />
+      </div>
+    </div>
+    <br /><br />
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Contraseña</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Contraseña"
+          formControlName="contrasena"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Rol</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Rol"
+          formControlName="rol"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Tipo de Pago</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Tipo de pago"
+          formControlName="tipoPago"
+        />
+      </div>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+  </form>
+</div>

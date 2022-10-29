@@ -1,0 +1,71 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Nombre Completo</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        clientInfo.nombreCompleto
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Telefono 1</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        clientInfo.telefonos[0]
+      }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Telefono 2</label>
+      <br />
+      <label for="exampleFormControlInput1">{{
+        clientInfo.telefonos[1]
+      }}</label>
+    </div>
+  </div>
+  <br /><br />
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Cedula</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ clientInfo.cedula }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Correo</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ clientInfo.correo }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Direccion</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ clientInfo.direccion }}</label>
+    </div>
+  </div>
+  <br /><br />
+  <div class="form-group row">
+    <div class="col">
+      <label for="exampleFormControlInput1">Usuario</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ clientInfo.usuario }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Contraseña</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ clientInfo.contrasena }}</label>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlInput1">Puntos</label>
+      <br />
+      <label for="exampleFormControlInput1">{{ clientInfo.puntos }}</label>
+    </div>
+  </div>
+  <br />
+  <button type="button" class="btn btn-secondary" (click)="edit()">
+    Editar
+  </button>
+  <button type="button" class="btn btn-danger" (click)="delete()">
+    Eliminar
+  </button>
+  <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+</div>

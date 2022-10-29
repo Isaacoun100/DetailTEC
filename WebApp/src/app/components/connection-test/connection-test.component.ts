@@ -10,7 +10,7 @@ import {ApiConnectionTestService} from '../../service/test/api-connection-test.s
 })
 export class ConnectionTestComponent implements OnInit {
 
-  information:InformationTestI[] | undefined;
+  information:InformationTestI[];
 
   constructor(private router:Router,private api: ApiConnectionTestService) { }
 

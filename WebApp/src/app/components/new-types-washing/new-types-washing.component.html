@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<div class="container">
+  <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Nombre"
+          formControlName="nombre"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">ID</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="ID"
+          formControlName="id_Lavado"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Personal Requerido</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Personal Requerido"
+          formControlName="personalRequerido"
+        />
+      </div>
+    </div>
+    <br /><br />
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Precio</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Precio"
+          formControlName="precio"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Costo</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Costo"
+          formControlName="costo"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Duracion</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Duracion"
+          formControlName="duracion"
+        />
+      </div>
+    </div>
+    <br /><br />
+    <div class="form-group row">
+      <div class="col">
+        <label for="exampleFormControlInput1">Puntuacion Lealtad</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Puntuacion Lealtad"
+          formControlName="puntuacionLealtad"
+        />
+      </div>
+      <div class="col">
+        <label for="exampleFormControlInput1">Productos Utilizados</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Productos Utilizados"
+          formControlName="productosUtilizados"
+        />
+      </div>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="button" class="btn btn-dark" (click)="exit()">Salir</button>
+  </form>
+</div>
