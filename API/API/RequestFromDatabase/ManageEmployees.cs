@@ -7,6 +7,9 @@ public class ManageEmployees {
     
     private DataBaseManager dataBaseManager= new DataBaseManager();
     
+    /**
+     * Returns the specified employee
+     */
     public Employee getEmployee(string cedula) {
         
         List<List<String>> data =  dataBaseManager.ReadOrderData("SELECT * " +
@@ -40,6 +43,9 @@ public class ManageEmployees {
 
     }
     
+    /**
+     * Gets all of the employees
+     */
     public List<Employee> GetAllEmployees() {
         
         List<List<String>> data =  dataBaseManager.ReadOrderData("SELECT * " +
@@ -78,6 +84,9 @@ public class ManageEmployees {
 
     }
 
+    /**
+     * Adds a new employee to the database
+     */
     public bool addEmployee(Employee newEmployee) {
 
         if (!getEmployee(newEmployee.cedula.ToString()).cedula.Equals('0')) {
@@ -104,6 +113,9 @@ public class ManageEmployees {
         return false;
     }
     
+    /**
+     * Deletes the specified employee
+     */
     public bool deleteEmployee(string cedula) {
 
         if (getEmployee(cedula).cedula!=0) {
@@ -119,6 +131,9 @@ public class ManageEmployees {
 
     }
 
+    /**
+     * Updates the specified employee with the given information
+     */
     public bool updateEmployee(Employee newEmployee) {
         
         Employee updatedEmployee = getEmployee(newEmployee.cedula.ToString());
@@ -176,6 +191,9 @@ public class ManageEmployees {
 
     }
     
+    /**
+     * Returns the ID of the specified employee
+     */
     public Employee loginEmployee(string cedula, string contrasena) {
 
         List<List<String>> data = dataBaseManager.ReadOrderData(String.Format(
