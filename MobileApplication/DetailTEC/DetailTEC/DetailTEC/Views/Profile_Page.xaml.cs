@@ -15,6 +15,7 @@ namespace DetailTEC.Views
         public Profile_Page()
         {
             InitializeComponent();
+            updateLabels();
     
         }
         private async void Change_Clicked(object sender, EventArgs e)

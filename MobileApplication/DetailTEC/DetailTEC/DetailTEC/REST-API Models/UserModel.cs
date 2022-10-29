@@ -26,7 +26,7 @@
         public string Name { get; set; }
 
         [JsonProperty("telefonos")]
-        public List<int> Telefonos { get; set; }
+        public List<String> Telefonos { get; set; }
 
         [JsonProperty("cedula")]
         public string ID { get; set; }
@@ -40,11 +40,11 @@
         [JsonProperty("usuario")]
         public string Username { get; set; }
 
-        [JsonProperty("password")]
+        [JsonProperty("contrasena")]
         public string Password { get; set; }
 
         [JsonProperty("puntos")]
-        public string Points { get; set; }
+        public int Points { get; set; }
     }
 
     public partial class User

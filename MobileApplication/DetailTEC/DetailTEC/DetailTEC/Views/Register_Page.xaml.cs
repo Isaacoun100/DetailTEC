@@ -1,4 +1,5 @@
-﻿//using CookTime.REST_API_Models;
+﻿
+using DetailTEC.REST_API_LoginModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 using System.Xml.Xsl;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using DetailTEC.REST_API_UserModel;
+using DetailTEC.Views;
 
 namespace DetailTEC.Views
 {
@@ -32,41 +35,40 @@ namespace DetailTEC.Views
         /// This method create an async request that send data of the new user
         /// @author Jose A.
         /// </summary>
-        private void RegisterRequest()
+        private async void RegisterRequest()
         {
-            /*
-            Newuser user = new Newuser();
-            user.Age = Int32.Parse(ageEntry.Text);
-            user.Email = emailEntry.Text;
-            user.Password = CreateMD5(passwordEntry.Text);
-            user.Name = nameEntry.Text;
+            User nuevoUsuario = new User();
+            nuevoUsuario.ID = idEntry.Text;
+            nuevoUsuario.Name = nameEntry.Text;
+
+            List<string> lista_tel = new List<string>();
+            lista_tel.Add(phoneEntry1.Text);
+            lista_tel.Add(phoneEntry2.Text);
+
+            nuevoUsuario.Telefonos = lista_tel;
+
+            nuevoUsuario.Address = addressEntry1.Text;
+            nuevoUsuario.Email = emailEntry.Text;
+            nuevoUsuario.Username = usernameEntry.Text;
+            nuevoUsuario.Password = passwordEntry.Text;
+
             HttpClient cliente = new HttpClient();
-            if (ChefBox.IsChecked)
-            {
-                string url = "http://" + LoginPage.ip + ":6969/newChef";//AQUI DEBE IR EL URL PARA CHEFS 
-                String jsonNewUser = JsonConvert.SerializeObject(user);
-                Console.WriteLine("JSON NEW USER:" + jsonNewUser);
-                var datasent = new StringContent(jsonNewUser);
-                Console.WriteLine("DATASENT" + datasent);
-                datasent.Headers.ContentType.MediaType = "application/json";
-                var result = await cliente.PostAsync(url, datasent);
-                var json = result.Content.ReadAsStringAsync().Result;
-                await DisplayAlert("Result", json, "ok");
-            }
-            else
-            {
-                string url = "http://" + LoginPage.ip + ":6969/newUser";//AQUI DEBE IR EL URL PARA USUARIOS SINGULARES
-                String jsonNewUser = JsonConvert.SerializeObject(user);
-                Console.WriteLine("JSON NEW USER:" + jsonNewUser);
-                var datasent = new StringContent(jsonNewUser);
-                Console.WriteLine("DATASENT" + datasent);
-                datasent.Headers.ContentType.MediaType = "application/json";
-                var result = await cliente.PostAsync(url, datasent);
-                var json = result.Content.ReadAsStringAsync().Result;
-                await DisplayAlert("Result", json, "ok");
-            }*/
+            string url = DetailTEC.Views.Login_Page.ip + "/api/addClientMobile";
 
+            String jsonNewUser = JsonConvert.SerializeObject(nuevoUsuario);
 
+            var datasent = new StringContent(jsonNewUser);
+
+            datasent.Headers.ContentType.MediaType = "application/json";
+
+            var result = await cliente.PostAsync(url, datasent);
+
+            var json = result.Content.ReadAsStringAsync().Result;
+
+            DetailTEC.Views.Login_Page.CURRENTUSER = DetailTEC.REST_API_UserModel.User.FromJson(json);
+
+            await DisplayAlert("DetailTEC", "Thanks for registering " + DetailTEC.Views.Login_Page.CURRENTUSER.Name, "OK");
+           
         }
 
 
@@ -75,45 +77,25 @@ namespace DetailTEC.Views
         /// @author Mauricio C.
         /// </summary>
         private void Button_Clicked(object sender, EventArgs e)
-        {/*
+        {
             var nameValidate = nameEntry.Text;
-            var ageValidate = ageEntry.Text;
+            var idValidate = idEntry.Text;
+            var tel1Validate = phoneEntry1.Text;
+            var addressValidate = addressEntry1.Text;
             var emailValidate = emailEntry.Text;
+            var userValidate = usernameEntry.Text;
             var passValidate = passwordEntry.Text;
-            if (!string.IsNullOrEmpty(nameValidate) && !string.IsNullOrEmpty(ageValidate) && !string.IsNullOrEmpty(emailValidate) && !string.IsNullOrEmpty(passValidate))
+            if (!string.IsNullOrEmpty(nameValidate) && !string.IsNullOrEmpty(idValidate) && !string.IsNullOrEmpty(tel1Validate) && !string.IsNullOrEmpty(addressValidate) && !string.IsNullOrEmpty(emailValidate) && !string.IsNullOrEmpty(userValidate) && !string.IsNullOrEmpty(passValidate))
             {
                 RegisterRequest();
-                DisplayAlert("REGISTRATION COMPLETE", "ENJOY COOKTIME!", "ACCEPT");
-                Navigation.PushAsync(new LoginPage());
+                DisplayAlert("REGISTRATION COMPLETE", "ENJOY DETAILTEC!", "ACCEPT");
+                Navigation.PushAsync(new Login_Page());
             }
             else
             {
                 DisplayAlert("ERROR", "YOU MUST FILL ALL THE BLANKS TO CONTINUE", "ACCEPT");
-            }*/
-            //Navigation.PushAsync(new Login_Page());
-        }
-
-
-        /// <summary>
-        /// This method encrypt the password with HASH MD5 algorithm
-        /// @author Jose A.
-        /// </summary>
-        public static string CreateMD5(string input)
-        {
-            // Use input string to calculate MD5 hash
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-                // Convert the byte array to hexadecimal string
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("X2"));
-                }
-                return sb.ToString();
             }
-        }
+            
+        } 
     }
 }

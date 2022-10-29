@@ -20,7 +20,7 @@ namespace DetailTEC.Views
 
         public void updatePoints()
         {
-            Points.Text = Login_Page.CURRENTUSER.Points;
+            Points.Text = Login_Page.CURRENTUSER.Points.ToString();
             
         }
     }

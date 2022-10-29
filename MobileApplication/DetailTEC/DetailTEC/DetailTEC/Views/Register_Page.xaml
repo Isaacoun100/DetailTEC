@@ -36,9 +36,7 @@
                 <Entry x:Name="idEntry" Keyboard ="Numeric"   Grid.Row="2" Placeholder="ID"/>
                 <Entry x:Name="phoneEntry1" Keyboard ="Default"   Grid.Row="3" Placeholder="Phone number 1 *"/>
                 <Entry x:Name="phoneEntry2" Keyboard ="Default"   Grid.Row="4" Placeholder="Phone number 2"/>
-                <Entry x:Name="addressEntry1" Keyboard ="Default"   Grid.Row="5" Placeholder="Address 1*"/>
-                <Entry x:Name="addressEntry2" Keyboard ="Default"   Grid.Row="6" Placeholder="Address 2"/>
-                <Entry x:Name="addressEntry3" Keyboard ="Default"   Grid.Row="7" Placeholder="Address 3"/>
+                <Entry x:Name="addressEntry1" Keyboard ="Default"   Grid.Row="5" Placeholder="Address"/>
                 <Entry x:Name="emailEntry" Keyboard ="Default"   Grid.Row="8" Placeholder="E-mail"/>
                 <Entry x:Name="usernameEntry" Keyboard ="Default"   Grid.Row="9" Placeholder="Username"/>
                 <Entry x:Name="passwordEntry" IsPassword="True" Keyboard ="Default"   Grid.Row="10" Placeholder="Password"/>
