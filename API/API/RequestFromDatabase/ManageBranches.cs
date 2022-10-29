@@ -7,6 +7,9 @@ public class ManageBranches {
     
     private DataBaseManager dataBaseManager= new DataBaseManager();
 
+    /**
+     * Gets a specified branch
+     */
     public Branch getBranch(string nombre)
     {
 
@@ -47,6 +50,9 @@ public class ManageBranches {
 
     }
     
+    /**
+     * Adds a specified branch
+     */
     public bool addBranch(Branch newBranch)
     {
         if (!getBranch(newBranch.nombre).nombre.Equals(newBranch.nombre))
@@ -74,7 +80,9 @@ public class ManageBranches {
         return false;
     }
     
-    
+    /**
+     * Returns all of the branches
+     */
     public List<Branch> getAllBranches()
     {
         List<List<String>> data =  dataBaseManager.ReadOrderData("SELECT * " +
@@ -116,6 +124,9 @@ public class ManageBranches {
         return allBranches;
     }
     
+    /**
+     * Deletes a branch
+     */
      public bool deleteBranch(string branchName)
     {
         if (!getBranch(branchName).nombre.Equals(""))
@@ -130,6 +141,9 @@ public class ManageBranches {
         return false;
     }
 
+    /**
+     * Updates a branch
+     */
     public bool updateBranch(Branch updateBranch)
     {
         Branch branch = getBranch(updateBranch.nombre);

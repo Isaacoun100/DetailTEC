@@ -5,7 +5,9 @@ namespace API.RequestFromDatabase;
 
 public class ManageProduct {
         private DataBaseManager dataBaseManager= new DataBaseManager();
-    
+    /**
+     * Gets the specified product
+     */
     public Product getProduct(string nombre) {
         
         List<List<String>> productList =  dataBaseManager.ReadOrderData(String.Format("SELECT * " +
@@ -34,7 +36,9 @@ public class ManageProduct {
         return product;
 
     }
-    
+    /**
+     * Returns all of the products
+     */
     public List<Product> getAllProducts() {
         
         List<List<String>> productList =  dataBaseManager.ReadOrderData(String.Format("SELECT * " +
@@ -68,6 +72,9 @@ public class ManageProduct {
         return allProducts;
     }
 
+    /**
+     * Adds a new product
+     */
     public bool addProduct(Product newProduct) {
         
         if (getProduct(newProduct.nombre).nombre.Equals("")) {
@@ -100,6 +107,9 @@ public class ManageProduct {
         return false;
     }
     
+    /**
+     * Deletes the specified product
+     */
     public bool deletePrduct(string nombre) {
 
         if (!getProduct(nombre).nombre.Equals("")) {
@@ -119,7 +129,9 @@ public class ManageProduct {
 
     }
     
-    
+    /**
+     * Updated the database with the information of the product
+     */
     public bool updateProduct(Product newProduct) {
 
         Product updatedProduct = getProduct(newProduct.nombre);

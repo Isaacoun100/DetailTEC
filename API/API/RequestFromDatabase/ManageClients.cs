@@ -8,6 +8,9 @@ public class ManageClients {
     
     private DataBaseManager dataBaseManager= new DataBaseManager();
     
+    /**
+     * Returns the specified employee
+     */
     public Client getClient(string cedula) {
         
         List<List<String>> data =  dataBaseManager.ReadOrderData(String.Format("SELECT * " +
@@ -45,6 +48,9 @@ public class ManageClients {
 
     }
     
+    /**
+     * Returns all of the clients
+     */
     public List<Client> getAllClients() {
         
         List<List<String>> data =  dataBaseManager.ReadOrderData("SELECT * " +
@@ -76,6 +82,9 @@ public class ManageClients {
 
     }
 
+    /**
+     * Adds a new client
+     */
     public bool addClient(Client newClient) {
 
         Client otherClient = getClient(newClient.cedula);
@@ -112,7 +121,9 @@ public class ManageClients {
         return false;
     }
     
-    
+    /**
+     * Add client for the mobile
+     */
     public bool addClientMobile(Client newClient) {
 
         if (!getClient(newClient.cedula).cedula.Equals("0")) {
@@ -148,7 +159,9 @@ public class ManageClients {
     }
     
     
-    
+    /**
+     * Deletes a client
+     */
     public bool deleteClient(string cedula) {
 
         if (!getClient(cedula).cedula.Equals("")) {
@@ -167,6 +180,9 @@ public class ManageClients {
 
     }
 
+    /**
+     * Updates the client
+     */
     public bool updateClient(Client newClient) {
 
         Client updatedClient = getClient(newClient.cedula.ToString());

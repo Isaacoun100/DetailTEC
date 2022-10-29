@@ -7,6 +7,9 @@ public class ManageProviders {
     
     private DataBaseManager dataBaseManager= new DataBaseManager();
     
+    /**
+     * Returns the provider of the specified cedulaJuridica
+     */
     public Provider getProvider(string cedulaJuridica) {
         
         List<List<String>> proveedor =  dataBaseManager.ReadOrderData(String.Format("SELECT * " +
@@ -39,6 +42,9 @@ public class ManageProviders {
 
     }
     
+    /**
+     * Returns all the providers from the database in a list of providers
+     */
     public List<Provider> getAllProviders() {
         
         List<List<String>> proveedor =  dataBaseManager.ReadOrderData(String.Format(
@@ -76,6 +82,9 @@ public class ManageProviders {
         return providerList;
     }
 
+    /**
+     *  Adds a new provider to the database
+     */
     public bool addProvider(Provider newProvider) {
         
         if (!getProvider(newProvider.cedulaJuridica.ToString()).cedulaJuridica.Equals('0')) {
@@ -110,6 +119,9 @@ public class ManageProviders {
         return false;
     }
     
+    /**
+     * Deletes the specified provider
+     */
     public bool deleteProvider(string cedulaJuridica) {
 
         if (!getProvider(cedulaJuridica).cedulaJuridica.Equals("0")) {
@@ -125,6 +137,9 @@ public class ManageProviders {
 
     }
     
+    /**
+     * Updates the information from the provider
+     */
         public bool updateProvider(Provider newProvider) {
 
         Provider updatedProvider = getProvider(newProvider.cedulaJuridica.ToString());
