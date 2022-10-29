@@ -22,7 +22,7 @@ public class ProviderController : ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", newProvider);
+        json = new StatusJSON("ok", newProvider);
         return Ok(json);
     }
 
@@ -38,7 +38,7 @@ public class ProviderController : ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", provider);
+        json = new StatusJSON("ok", provider);
         return Ok(json);
     }
 
@@ -54,7 +54,7 @@ public class ProviderController : ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", "provider deleted succesfully");
+        json = new StatusJSON("ok", "provider deleted succesfully");
         return Ok(json);
     }
 
@@ -71,7 +71,7 @@ public class ProviderController : ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", allProviders);
+        json = new StatusJSON("ok", allProviders);
         return Ok(json);
     }
 
@@ -87,7 +87,7 @@ public class ProviderController : ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", "Provider updated succesfully");
+        json = new StatusJSON("ok", "Provider updated succesfully");
         return Ok(json);
 
     }

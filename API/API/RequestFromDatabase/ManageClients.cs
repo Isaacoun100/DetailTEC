@@ -78,7 +78,9 @@ public class ManageClients {
 
     public bool addClient(Client newClient) {
 
-        if (!getClient(newClient.cedula).cedula.Equals("0")) {
+        Client otherClient = getClient(newClient.cedula);
+
+        if (otherClient.cedula.Equals("")) {
 
             string queryString = string.Format(
                 "INSERT INTO Cliente (cedula, nombreCompleto, puntos, contrasena, correo, usuario, direccion)" +

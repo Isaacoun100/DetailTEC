@@ -2,5 +2,5 @@ namespace API.Models;
 
 public class ProviderID
 {
-    public int cedulaJuridica { get; set; }
+    public string cedulaJuridica { get; set; }
 }

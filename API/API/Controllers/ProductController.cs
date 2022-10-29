@@ -12,17 +12,17 @@ public class ProductController: ControllerBase
     private static List<Product> products = new List<Product>();
 
     [HttpPost("getProduct")]
-    public async Task<ActionResult<Product>> getProduct(string productToFind)
+    public async Task<ActionResult<Product>> getProduct(Product productToFind)
     {
         ManageProduct manageProduct = new ManageProduct();
-        Product product = manageProduct.getProduct(productToFind);
+        Product product = manageProduct.getProduct(productToFind.nombre);
         StatusJSON result;
         if (product.nombre.Equals(""))
         {
             result = new StatusJSON("Error", null);
             return BadRequest(result);
         }
-        result = new StatusJSON("Ok", product);
+        result = new StatusJSON("ok", product);
         return Ok(result);
     }
     
@@ -39,7 +39,7 @@ public class ProductController: ControllerBase
             return BadRequest(json);
         }
 
-        json = new StatusJSON("Ok", allProducts);
+        json = new StatusJSON("ok", allProducts);
         return Ok(json);
 
     }
@@ -57,22 +57,22 @@ public class ProductController: ControllerBase
             
         }
 
-        json = new StatusJSON("OK", "Product added succesfully");
+        json = new StatusJSON("oK", "Product added succesfully");
         return Ok(json);
     }
 
     [HttpDelete("deleteProduct")]
-    public async Task<ActionResult<Product>> deleteProduct(string productToDelete)
+    public async Task<ActionResult<Product>> deleteProduct(ProductName productToDelete)
     {
         ManageProduct manageProduct = new ManageProduct();
-        var deletedProduct = manageProduct.deletePrduct(productToDelete);
+        var deletedProduct = manageProduct.deletePrduct(productToDelete.nombre);
         StatusJSON json;
         if (!deletedProduct)
         {
             json = new StatusJSON("Error", null);
             return BadRequest(json);
         }
-        json = new StatusJSON("Ok", "product deleted succesfully");
+        json = new StatusJSON("ok", "product deleted succesfully");
         return Ok(json);
     }
 
@@ -87,7 +87,7 @@ public class ProductController: ControllerBase
             json = new StatusJSON("Error", null);
             return BadRequest(json);
         }
-        json = new StatusJSON("Ok", "Product updated succesfully");
+        json = new StatusJSON("ok", "Product updated succesfully");
         return Ok(json);
 
     }
